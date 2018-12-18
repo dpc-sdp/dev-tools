@@ -1,0 +1,95 @@
+#!/usr/bin/env bash
+##
+# Dev Tools installer.
+#
+# Usage:
+# curl -L https://raw.githubusercontent.com/dpc-sdp/dev-tools/master/init.sh|bash
+# or
+# curl -L https://raw.githubusercontent.com/dpc-sdp/dev-tools/master/init.sh|bash -s -- /path/to/destination/directory
+
+CUR_DIR=$(pwd)
+# Destination directory, that can be overridden with the first argument to this script.
+DST_DIR=${DST_DIR:-$CUR_DIR}
+DST_DIR=${1:-$DST_DIR}
+# Flag to allow writting downloaded files into local ignore for current repository.
+ALLOW_USE_LOCAL_IGNORE=${ALLOW_USE_LOCAL_IGNORE:-1}
+# Organisation name to download the files from.
+GH_ORG=${GH_ORG:-dpc-sdp}
+# Project name to download the files from.
+GH_PROJECT=${GH_PROJECT:-dev-tools}
+# Optional commit to download. If not provided, latest release will be downloaded.
+GH_COMMIT=${GH_COMMIT:-}
+# Temporary directory to download and expand files to.
+TMP_DIR=$(mktemp -d)
+
+echo "=> Installing Dev Tools into $DST_DIR directory"
+
+if [ "$GH_COMMIT" != "" ]; then
+  echo "==> Downloading project at commit $GH_COMMIT"
+  curl -L "https://github.com/$GH_ORG/$GH_PROJECT/archive/$GH_COMMIT.tar.gz" \
+    | tar xvzf - -C $TMP_DIR --strip 1
+else
+  echo "==> Downloading the latest version of the project"
+  curl -s -L "https://api.github.com/repos/$GH_ORG/$GH_PROJECT/releases/latest" \
+    | grep '"tag_name":' \
+    | sed -E 's/.*"([^"]+)".*/\1/' \
+    | xargs -I {} curl -L "https://github.com/$GH_ORG/$GH_PROJECT/archive/"{}'.tar.gz' \
+    | tar xvzf - -C $TMP_DIR --strip 1
+fi
+
+[ $? -ne 0 ] && echo "ERROR: Unable to download the project" && exit 1
+
+# Check if specified file is tracked by git.
+git_file_is_tracked(){
+  if [ -d ./.git/ ]; then
+    git ls-files --error-unmatch "$1" &>/dev/null
+    echo $?
+  else
+    echo 1
+  fi
+}
+
+# Check if specified file is ignored by git.
+git_file_is_ignored(){
+  if [ -d ./.git/ ]; then
+    git check-ignore "$1"
+    echo $?
+  else
+    echo 1
+  fi
+}
+
+# Add specified file to local git ignore (not .gitgnore).
+git_add_to_local_ignore(){
+  if [ -d ./.git/ ]; then
+    if ! grep -Fxq "$1" ./.git/info/exclude; then
+      echo "$1" >> ./.git/info/exclude
+      echo "==> Added file $1 to local git ignore"
+    fi
+  fi
+}
+
+[ ! -d "$DST_DIR" ] && echo "==> Creating destination directory $DST_DIR" && mkdir -p $DST_DIR
+
+pushd $DST_DIR > /dev/null
+
+# Traverse through all downloaded files.
+for file in $(find $TMP_DIR -type f) ; do
+  relative_file=${file#"$TMP_DIR/"}
+  # Only process untracked files - allows to have project-specific overrides committed.
+  if [ "$(git_file_is_tracked $relative_file)" != "0" ]; then
+    mkdir -p $(dirname $relative_file)
+    cp -f $file $relative_file
+    echo "==> Copied file $relative_file"
+    # Add files to local ignore (not .gitignore), if allowed.
+    if [ "$ALLOW_USE_LOCAL_IGNORE" ] && [ -d ./.git/ ] && [ "$(git_file_is_ignored $relative_file)" != "0" ]; then
+      git_add_to_local_ignore "$relative_file"
+    fi
+  else
+    echo "==> Skipped already committed file $relative_file"
+  fi
+done;
+
+popd > /dev/null
+
+echo "=> Finished installation of Dev Tools into $DST_DIR directory"
