@@ -14,7 +14,9 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 RUN apk --update add jq clamav clamav-libunrar \
-    && freshclam
+    # Antivirus update returns non-zero codes.
+    # @see https://github.com/clamwin/clamav/blob/0.100.1/freshclam/freshclamcodes.h#L23
+    && freshclam || freshclam_exit=$? && [ "$freshclam_exit" == "1" ]
 
 ADD patches /app/patches
 ADD scripts /app/scripts
