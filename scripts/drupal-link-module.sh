@@ -25,6 +25,7 @@ mkdir -p ${LOCAL_REPOS}/${PACKAGE_NAME}
 # Copy code at latest commit into local repository directory, so that it can be
 # symlinked as a local package by composer.
 git --git-dir=${CUR_DIR}/../.git --work-tree=${CUR_DIR}/.. ls-tree HEAD --name-only | xargs -I '{}' cp -R '{}' ${LOCAL_REPOS}/${PACKAGE_NAME}/
+cp -Rf ${CUR_DIR}/../.git ${LOCAL_REPOS}/${PACKAGE_NAME}
 
 # Add local module repository to composer configuration. It will by symlinked
 # by default, rather then copied.
