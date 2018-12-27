@@ -23,7 +23,7 @@ fi
 echo "==> Started $PACKAGE_NAME module installation"
 
 # Require module from local repository.
-composer require ${PACKAGE_ORG}/${PACKAGE_NAME} @dev
+composer require --prefer-source ${PACKAGE_ORG}/${PACKAGE_NAME}:@dev
 
 # If running with suggested modules, install them first.
 if [ "$INSTALL_SUGGEST" == "1" ] ; then
