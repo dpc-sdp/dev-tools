@@ -27,14 +27,14 @@ composer require ${PACKAGE_ORG}/${PACKAGE_NAME} @dev
 
 # If running with suggested modules, install them first.
 if [ "$INSTALL_SUGGEST" == "1" ] ; then
-  composer_suggests=$(cat ${COMPOSER} | jq -r 'select(.suggest != null) | .suggest | keys[]')
+  composer_suggests=$(cat ${COMPOSER} | jq -r 'select(.suggest != null) | .suggest | keys_unsorted[]')
   for composer_suggest in $composer_suggests
   do
     echo "==> Requiring suggested module $composer_suggest"
     composer require $composer_suggest
   done
 
-  drupal_suggests=$(cat ${COMPOSER} | jq -r 'select(.suggest != null) | .suggest | keys[]' | sed "s/$PACKAGE_ORG\///" | cut -f1 -d":")
+  drupal_suggests=$(cat ${COMPOSER} | jq -r 'select(.suggest != null) | .suggest | keys_unsorted[]' | sed "s/$PACKAGE_ORG\///" | cut -f1 -d":")
   for drupal_suggest in $drupal_suggests
   do
     echo "==> Enabling suggested module $drupal_suggest"
