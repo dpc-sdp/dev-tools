@@ -1,0 +1,12 @@
+{
+    "name": "dpc-sdp/devtools",
+    "description": "Tools used for development of Tide distribution and modules",
+    "license": "GPL-2.0-or-later",
+    "type": "drupal-module",
+    "require": {
+        "dpc-sdp/tide_core": "dev-ci"
+    },
+    "suggest": {
+        "dpc-sdp/tide_media:dev-ci": "Media and related configuration for Tide Drupal 8 distribution"
+    }
+}

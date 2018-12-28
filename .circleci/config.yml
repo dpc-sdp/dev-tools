@@ -5,14 +5,12 @@ aliases:
     working_directory: /app
     docker:
       - image: &builder-image integratedexperts/ci-builder
-        environment: &environment
-          COMPOSE_PROJECT_NAME: mysite
     steps:
       - attach_workspace:
           at: /workspace
       - checkout
       # Init environment for development.
-      - run: ./dev-init.sh
+      - run: if [ -f "./dev-init.sh" ] && [ ! "DEV_TOOLS" ]; then ./dev-init.sh; fi
       - setup_remote_docker:
           docker_layer_caching: true
       - run: .circleci/build.sh
@@ -33,7 +31,6 @@ jobs:
     docker:
       - image: *builder-image
         environment:
-          <<: *environment
           INSTALL_SUGGEST: 1
           BEHAT_PROFILE: "--profile=suggest"
 

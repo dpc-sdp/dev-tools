@@ -1,3 +1,7 @@
 # Ignore files for distribution archives.
 .gitattributes            export-ignore
 install                   export-ignore
+
+# Exclude Dev Tools files.
+composer.json             export-ignore
+devtools.info.yml         export-ignore

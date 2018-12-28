@@ -1,0 +1,6 @@
+name: Devtools Test
+description: Test module for Dev Tools.
+package: Custom
+
+type: module
+core: 8.x
