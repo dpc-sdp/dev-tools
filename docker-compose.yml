@@ -6,7 +6,7 @@
 version: '2.3'
 
 x-project:
-  &project mysite
+  &project ${PROJECT_NAME:-mysite}
 
 x-volumes:
   &default-volumes
@@ -19,7 +19,8 @@ x-volumes:
   # constantly changes on the host, we need to have these changes synchronized
   # into all containers. Since we are using single `docker-compose.yml` file for
   # all environments, we have to accommodate both cases, so we are specifying an
-  # override for the same directory as a mounted volume.
+  # override for the same directory as a mounted volume as a commented-out lines,
+  # which will be automatically uncommented in CI.
   #
   # See Docker Compose reference about volumes https://docs.docker.com/compose/compose-file/#short-syntax-3
   volumes:
@@ -31,9 +32,10 @@ x-volumes:
 x-environment:
   &default-environment
   LAGOON_PROJECT: *project
-  # Local dev URL. Make sure that there is no trailing slash in the value.
+  # Local dev URL populated from the environment. Do not override here. Instead,
+  # specify the value in .env file.
   LAGOON_LOCALDEV_URL: ${LOCALDEV_URL:-http://mysite.docker.amazee.io}
-  # Uncomment to enable xdebug and then restart via `ahoy up`
+  # Uncomment to enable xdebug and then restart via `ahoy up`.
   #XDEBUG_ENABLE: "true"
 
 services:
