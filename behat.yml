@@ -14,6 +14,7 @@ default:
       - Drupal\DrupalExtension\Context\MarkupContext
       - Drupal\DrupalExtension\Context\MessageContext
       - IntegratedExperts\BehatScreenshotExtension\Context\ScreenshotContext
+      - IntegratedExperts\BehatRelativityExtension\Context\RelativityContext
       - Ubirak\RestApiBehatExtension\RestApiContext
       - Ubirak\RestApiBehatExtension\Json\JsonContext
 
@@ -38,23 +39,55 @@ default:
         root: docroot
       selectors:
         message_selector: '.messages'
-        error_message_selector: '.messages.error'
-        success_message_selector: '.messages.status'
-        warning_message_selector: '.messages.warning'
+        error_message_selector: '.messages.messages--error'
+        success_message_selector: '.messages.messages--status'
+        warning_message_selector: '.messages.messages--warning'
       region_map:
-        header: '.layout-header'
-        breadcrumb: '.layout-breadcrumb'
-        content: '.layout-content'
-        sidebar: '.layout-sidebar'
+        alert: '.region-alert'
+        header: '.region-header'
+        header_search: '.region-header-search'
+        menu: '.region-menu'
+        breadcrumb: '.region-breadcrumb'
+        feature: '.region-feature'
+        above_content: '.region-above-content'
+        content: '.region-content'
+        sidebar: '.region-sidebar'
         above_footer: '.region-above-footer'
-        footer: '.layout-footer'
+        footer_first: '.region-footer-first'
+        footer_second: '.region-footer-second'
+        footer_third: '.region-footer-third'
+        footer_fourth: '.region-footer-fourth'
+        footer_fifth: '.region-footer-fifth'
+        footer_sixth: '.region-footer-sixth'
+        splash: '.region-splash'
+
     # Allows to capture HTML and JPG screenshots (based on the driver used).
     IntegratedExperts\BehatScreenshotExtension:
       dir: '%paths.base%/screenshots'
       fail: true
       purge: false
-    # Show explicit fail information and continue the test run.
-    IntegratedExperts\BehatFormatProgressFail\FormatExtension: ~
+    IntegratedExperts\BehatRelativityExtension:
+      breakpoints:
+        mobile:
+          width: 320
+          height: 480
+        tablet:
+          width: 768
+          height: 1024
+        desktop:
+          width: 1024
+          height: 1024
+          default: true
+      # Vertical offset - document will be scrolled to the element with this offset.
+      # Useful when fixed elements may cover part of pages making it impossible to click on components.
+      offset: 60
+      # List of site-wide components.
+      components:
+        'header-container': ".header-container"
+        'page': ".layout-container"
+        'header': "header"
+        'main': "main"
+        'footer': "footer"
     Ubirak\RestApiBehatExtension\Extension:
       rest:
         base_url: http://nginx:8080
