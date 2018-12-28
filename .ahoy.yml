@@ -12,8 +12,8 @@ commands:
       && ahoy up -- --build --force-recreate \
       && ahoy install-dev \
       && ahoy install-site \
-      && ahoy drush en tide_test -y \
       && if [ "$COMPOSE" != "composer.json" ]; then ahoy install-module; fi \
+      && ahoy drush en tide_test -y \
       && ahoy line "Build complete" \
       && ahoy info 1
 
