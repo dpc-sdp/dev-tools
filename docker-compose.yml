@@ -109,6 +109,16 @@ services:
     labels:
       lagoon.type: none
 
+  elasticsearch:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile.elasticsearch
+      args:
+      - ES_TPL=${ES_TPL:-elasticsearch.yml}
+    labels:
+      lagoon.type: custom
+      lagoon.template: .docker/.lagoon.elasticsearch.yml
+
 networks:
   amazeeio-network:
     external: true

@@ -141,6 +141,7 @@ entrypoint:
   export COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME:-$PROJECT_NAME}
   export LOCALDEV_URL=${LOCALDEV_URL:-http://$PROJECT_NAME.docker.amazee.io}
   export COMPOSER=${COMPOSER:-composer.json}
+  if [ "$CI" ]; then export ES_TPL=elasticsearch.ci.yml; fi
   bash -c "$0" "$@"
 - '{{cmd}}'
 - '{{name}}'

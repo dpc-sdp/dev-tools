@@ -1,0 +1,14 @@
+FROM amazeeio/elasticsearch:latest
+ARG ES_TPL
+
+ENV ES_TPL=$ES_TPL
+
+RUN bin/elasticsearch-plugin install analysis-kuromoji \
+    && bin/elasticsearch-plugin install analysis-icu
+
+COPY .docker/elasticsearch.yml .docker/elasticsearch.* /tmp/elasticsearch/
+
+RUN mkdir -p config \
+    && cp /tmp/elasticsearch/$ES_TPL config/elasticsearch.yml
+
+ENV ES_JAVA_OPTS "-Xms1000m -Xmx1000m"
