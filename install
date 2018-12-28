@@ -37,7 +37,7 @@ else
     | tar xvzf - -C $TMP_DIR --strip 1
 fi
 
-[ $? -ne 0 ] && echo "ERROR: Unable to download the project" && exit 1
+([ $? -ne 0 ] || [ -z "$(ls -A $TMP_DIR)" ] ) && echo "ERROR: Unable to download the project" && exit 1
 
 # Check if specified file is tracked by git.
 git_file_is_tracked(){
