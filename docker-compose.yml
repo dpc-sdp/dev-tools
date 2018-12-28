@@ -23,10 +23,10 @@ x-volumes:
   #
   # See Docker Compose reference about volumes https://docs.docker.com/compose/compose-file/#short-syntax-3
   volumes:
-    - app:/app
-    - files:/app/docroot/sites/default/files
     - .:/app:${VOLUME_FLAGS:-delegated} ### Local overrides to mount host filesystem. Automatically removed in CI and PROD.
     - ./docroot/sites/default/files:/app/docroot/sites/default/files:${VOLUME_FLAGS:-delegated} ### Local overrides to mount host filesystem. Automatically removed in CI and PROD.
+    ##- app:/app
+    ##- files:/app/docroot/sites/default/files
 
 x-environment:
   &default-environment
