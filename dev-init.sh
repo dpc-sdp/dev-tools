@@ -10,6 +10,9 @@
 # Usage:
 # . dev-init.sh
 #
+# To update all files, including committed:
+# ALLOW_OVERRIDE=1 . dev-init.sh
+#
 
 # Development only: uncomment and set the commit value to fetch Dev Tools at
 # specific commit.

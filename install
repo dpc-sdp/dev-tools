@@ -11,7 +11,9 @@ CUR_DIR=$(pwd)
 # Destination directory, that can be overridden with the first argument to this script.
 DST_DIR=${DST_DIR:-$CUR_DIR}
 DST_DIR=${1:-$DST_DIR}
-# Flag to allow writting downloaded files into local ignore for current repository.
+# Flag to allow override existing committed files.
+ALLOW_OVERRIDE=${ALLOW_OVERRIDE:-0}
+# Flag to allow writing downloaded files into local ignore for current repository.
 ALLOW_USE_LOCAL_IGNORE=${ALLOW_USE_LOCAL_IGNORE:-1}
 # Organisation name to download the files from.
 GH_ORG=${GH_ORG:-dpc-sdp}
@@ -76,17 +78,23 @@ pushd $DST_DIR > /dev/null
 # Traverse through all downloaded files.
 for file in $(find $TMP_DIR -type f) ; do
   relative_file=${file#"$TMP_DIR/"}
-  # Only process untracked files - allows to have project-specific overrides committed.
-  if [ "$(git_file_is_tracked $relative_file)" != "0" ]; then
+  # Only process untracked files - allows to have project-specific overrides
+  # being committed and not overridden OR tracked files are allowed to
+  # be overridden.
+  file_is_tracked=$(git_file_is_tracked $relative_file)
+  if [ "$file_is_tracked" != "0" ] || [ "$ALLOW_OVERRIDE" != "0" ]; then
     mkdir -p $(dirname $relative_file)
     cp -f $file $relative_file
     echo "==> Copied file $relative_file"
-    # Add files to local ignore (not .gitignore), if allowed.
-    if [ "$ALLOW_USE_LOCAL_IGNORE" ] && [ -d ./.git/ ] && [ "$(git_file_is_ignored $relative_file)" != "0" ]; then
+    # Add files to local ignore (not .gitignore), if all conditions pass:
+    #  - allowed to add to local ignore
+    #  - not already ignored
+    #  - not currently tracked
+    if [ "$ALLOW_USE_LOCAL_IGNORE" ] && [ -d ./.git/ ] && [ "$(git_file_is_ignored $relative_file)" != "0" ] && [ "$file_is_tracked" != "0" ]; then
       git_add_to_local_ignore "$relative_file"
     fi
   else
-    echo "==> Skipped already committed file $relative_file"
+    echo "==> Skipped file $relative_file"
   fi
 done;
 
