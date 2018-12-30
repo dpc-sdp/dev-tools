@@ -18,7 +18,7 @@ if [ "$PACKAGE_NAME" == "" ]; then
 fi
 [ "$PACKAGE_NAME" == "" ] && "ERROR: Package name is not provided" && exit 1
 
-echo "==> Started $PACKAGE_NAME module linking"
+echo "==> Started $PACKAGE_NAME package linking"
 
 rm -Rf ${LOCAL_REPOS}/${PACKAGE_NAME}
 mkdir -p ${LOCAL_REPOS}/${PACKAGE_NAME}
@@ -31,4 +31,4 @@ cp -Rf ${CUR_DIR}/../.git ${LOCAL_REPOS}/${PACKAGE_NAME}
 # by default, rather then copied.
 composer config repositories.${PACKAGE_ORG}/${PACKAGE_NAME} path ${LOCAL_REPOS}/${PACKAGE_NAME}
 
-echo "==> Finished $PACKAGE_NAME module linking"
+echo "==> Finished $PACKAGE_NAME package linking"

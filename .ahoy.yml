@@ -11,6 +11,7 @@ commands:
       && (docker network prune -f > /dev/null && docker network inspect amazeeio-network > /dev/null || docker network create amazeeio-network) \
       && ahoy up -- --build --force-recreate \
       && ahoy install-dev \
+      && if [ "$DRUPAL_PROFILE" ]; then ahoy install-profile; fi \
       && ahoy install-site \
       && if [ "$COMPOSE" != "composer.json" ]; then ahoy install-module; fi \
       && ahoy drush en tide_test -y \
@@ -98,6 +99,10 @@ commands:
     usage: Install a module from current repository root
     cmd: ahoy cli "INSTALL_SUGGEST=$INSTALL_SUGGEST scripts/drupal-install-module.sh"
 
+  install-profile:
+    usage: Install a profile from current repository root
+    cmd: ahoy cli "INSTALL_SUGGEST=$INSTALL_SUGGEST scripts/drupal-install-profile.sh"
+
   clean:
     usage: Remove all build files
     cmd: |
@@ -141,6 +146,7 @@ entrypoint:
   export COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME:-$PROJECT_NAME}
   export LOCALDEV_URL=${LOCALDEV_URL:-http://$PROJECT_NAME.docker.amazee.io}
   export COMPOSER=${COMPOSER:-composer.json}
+  export DRUPAL_PROFILE=${DRUPAL_PROFILE:-}
   if [ "$CI" ]; then export ES_TPL=elasticsearch.ci.yml; fi
   bash -c "$0" "$@"
 - '{{cmd}}'

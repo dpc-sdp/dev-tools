@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 ##
-# Install current module.
+# Install current profile.
 #
 # This script must run from within container.
 #
@@ -20,14 +20,12 @@ if [ "$PACKAGE_NAME" == "" ]; then
 fi
 [ "$PACKAGE_NAME" == "" ] && "ERROR: Package name is not provided" && exit 1
 
-grep -qv 'type: module' *.info.yml && echo "Skipping module installation as current project is not a module" && exit 0
-
-echo "==> Started $PACKAGE_NAME module installation"
+echo "==> Started $PACKAGE_NAME profile installation"
 
 # Require module from local repository.
 composer require --prefer-source ${PACKAGE_ORG}/${PACKAGE_NAME}:@dev
 
-# If running with suggested modules, install them first.
+# If running with suggested modules, install suggested modules first.
 if [ "$INSTALL_SUGGEST" == "1" ] ; then
   composer_suggests=$(cat ${COMPOSER} | jq -r 'select(.suggest != null) | .suggest | keys_unsorted[]')
   for composer_suggest in $composer_suggests
@@ -35,15 +33,6 @@ if [ "$INSTALL_SUGGEST" == "1" ] ; then
     echo "==> Requiring suggested module $composer_suggest"
     composer require $composer_suggest
   done
-
-  drupal_suggests=$(cat ${COMPOSER} | jq -r 'select(.suggest != null) | .suggest | keys_unsorted[]' | sed "s/$PACKAGE_ORG\///" | cut -f1 -d":")
-  for drupal_suggest in $drupal_suggests
-  do
-    echo "==> Enabling suggested module $drupal_suggest"
-    drush -r ${APP}/${WEBROOT} en -y $drupal_suggest
-  done
 fi
 
-drush en -y ${PACKAGE_NAME}
-
-echo "==> Finished $PACKAGE_NAME module installation"
+echo "==> Finished $PACKAGE_NAME profile installation"
