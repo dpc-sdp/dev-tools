@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 ##
-# Link current module.
+# Link current package.
 #
 # This script must run from within container.
 #
@@ -27,7 +27,7 @@ mkdir -p ${LOCAL_REPOS}/${PACKAGE_NAME}
 git --git-dir=${CUR_DIR}/../.git --work-tree=${CUR_DIR}/.. ls-tree HEAD --name-only | xargs -I '{}' cp -R '{}' ${LOCAL_REPOS}/${PACKAGE_NAME}/
 cp -Rf ${CUR_DIR}/../.git ${LOCAL_REPOS}/${PACKAGE_NAME}
 
-# Add local module repository to composer configuration. It will by symlinked
+# Add local package repository to composer configuration. It will by symlinked
 # by default, rather then copied.
 composer config repositories.${PACKAGE_ORG}/${PACKAGE_NAME} path ${LOCAL_REPOS}/${PACKAGE_NAME}
 

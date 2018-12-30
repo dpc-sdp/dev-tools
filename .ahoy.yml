@@ -7,7 +7,7 @@ commands:
     cmd: |
       ahoy clean \
       && if [ "$COMPOSE" != "composer.json" ]; then ahoy composer-merge; fi \
-      && if [ "$COMPOSE" != "composer.json" ]; then ahoy link-module; fi \
+      && if [ "$COMPOSE" != "composer.json" ]; then ahoy link-package; fi \
       && (docker network prune -f > /dev/null && docker network inspect amazeeio-network > /dev/null || docker network create amazeeio-network) \
       && ahoy up -- --build --force-recreate \
       && ahoy install-dev \
@@ -90,9 +90,9 @@ commands:
       && ahoy cli "rm -f ${APP}/${WEBROOT}/sites/default/services.yml" \
       && ahoy drush si ${DRUPAL_PROFILE:-testing} -y --db-url=mysql://drupal:drupal@${MYSQL_HOST}/drupal --account-name=admin --account-pass=admin install_configure_form.enable_update_status_module=NULL install_configure_form.enable_update_status_emails=NULL
 
-  link-module:
-    usage: Link module from current repository root
-    cmd: scripts/drupal-link-module.sh
+  link-package:
+    usage: Link package from current repository root
+    cmd: scripts/link-package.sh
 
   install-module:
     usage: Install a module from current repository root
