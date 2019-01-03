@@ -3,5 +3,6 @@
 install                   export-ignore
 
 # Exclude Dev Tools files.
+README.md				  export-ignore
 composer.json             export-ignore
 devtools.info.yml         export-ignore
