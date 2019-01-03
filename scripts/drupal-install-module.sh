@@ -20,9 +20,12 @@ if [ "$PACKAGE_NAME" == "" ]; then
 fi
 [ "$PACKAGE_NAME" == "" ] && "ERROR: Package name is not provided" && exit 1
 
-grep -qv 'type: module' *.info.yml && echo "Skipping module installation as current project is not a module" && exit 0
-
-echo "==> Started $PACKAGE_NAME module installation"
+if grep -q 'type: module' *.info.yml; then
+  echo "==> Started $PACKAGE_NAME module installation"
+else
+  echo "Skipping module installation as current project is not a module"
+  exit 0
+fi
 
 # Require module from local repository.
 composer require --prefer-source ${PACKAGE_ORG}/${PACKAGE_NAME}:@dev
