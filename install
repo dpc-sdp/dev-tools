@@ -27,11 +27,11 @@ TMP_DIR=$(mktemp -d)
 echo "=> Installing Dev Tools into $DST_DIR directory"
 
 if [ "$GH_COMMIT" != "" ]; then
-  echo "==> Downloading project at commit $GH_COMMIT"
+  echo "==> Downloading Dev Tools at commit $GH_COMMIT"
   curl -L "https://github.com/$GH_ORG/$GH_PROJECT/archive/$GH_COMMIT.tar.gz" \
     | tar xvzf - -C $TMP_DIR --strip 1
 else
-  echo "==> Downloading the latest version of the project"
+  echo "==> Downloading the latest version of Dev Tools"
   curl -s -L "https://api.github.com/repos/$GH_ORG/$GH_PROJECT/releases/latest" \
     | grep '"tag_name":' \
     | sed -E 's/.*"([^"]+)".*/\1/' \
