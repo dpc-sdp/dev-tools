@@ -13,6 +13,9 @@ INSTALL_SUGGEST=${INSTALL_SUGGEST:-}
 COMPOSER=${COMPOSER:-composer.build.json}
 APP=${APP:-/app}
 WEBROOT=${WEBROOT:-docroot}
+TEST_PACKAGE_NAME=${TEST_PACKAGE_NAME:-tide_test}
+# @todo: Replace default value with `dev-master`.
+TEST_PACKAGE_VERSION=${TEST_PACKAGE_VERSION:-dev-ci}
 
 # Extract module name from the *.info.yml file, if not provided.
 if [ "$PACKAGE_NAME" == "" ]; then
@@ -26,6 +29,9 @@ else
   echo "Skipping module installation as current project is not a module"
   exit 0
 fi
+
+# Require an additional test package.
+[ "${PACKAGE_NAME}" != "${TEST_PACKAGE_NAME}" ] && composer require --prefer-source ${PACKAGE_ORG}/${TEST_PACKAGE_NAME}:${TEST_PACKAGE_VERSION}
 
 # Require module from local repository.
 composer require --prefer-source ${PACKAGE_ORG}/${PACKAGE_NAME}:@dev
