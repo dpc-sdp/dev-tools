@@ -90,13 +90,23 @@ services:
       lagoon.persistent: /app/docroot/sites/default/files/
 
   mariadb:
-    image: amazeeio/mariadb-drupal
+    image: singledigital/bay-mariadb
     environment:
       << : *default-environment
     ports:
       - "3306" # Find port on host with `ahoy info` or `docker-compose port mariadb 3306`
     labels:
       lagoon.type: mariadb
+
+  elasticsearch:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile.elasticsearch
+      args:
+      - ES_TPL=${ES_TPL:-elasticsearch.yml}
+    labels:
+      lagoon.type: custom
+      lagoon.template: .docker/.lagoon.elasticsearch.yml
 
   chrome:
     image: selenium/standalone-chrome
@@ -108,16 +118,6 @@ services:
       - cli
     labels:
       lagoon.type: none
-
-  elasticsearch:
-    build:
-      context: .
-      dockerfile: .docker/Dockerfile.elasticsearch
-      args:
-      - ES_TPL=${ES_TPL:-elasticsearch.yml}
-    labels:
-      lagoon.type: custom
-      lagoon.template: .docker/.lagoon.elasticsearch.yml
 
 networks:
   amazeeio-network:

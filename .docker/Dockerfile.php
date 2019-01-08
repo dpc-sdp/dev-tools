@@ -1,8 +1,8 @@
-# @see https://github.com/amazeeio/lagoon/tree/master/images/php/fpm
+# @see https://github.com/dpc-sdp/bay/blob/master/bay/images/Dockerfile.php
 ARG CLI_IMAGE
 FROM ${CLI_IMAGE:-cli} as cli
 
-FROM amazeeio/php:7.1-fpm
+FROM singledigital/bay-php
 
 # Antivirus update returns non-zero codes.
 # @see https://github.com/clamwin/clamav/blob/0.100.1/freshclam/freshclamcodes.h#L23

@@ -1,5 +1,5 @@
-# @see https://github.com/amazeeio/lagoon/tree/master/images/php/cli-drupal
-FROM amazeeio/php:7.1-cli-drupal
+# @see https://github.com/dpc-sdp/bay/blob/master/bay/images/Dockerfile.php
+FROM singledigital/bay-cli
 ARG COMPOSER
 
 ENV WEBROOT=docroot \

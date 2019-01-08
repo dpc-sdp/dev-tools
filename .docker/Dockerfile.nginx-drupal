@@ -1,8 +1,8 @@
-# @see https://github.com/amazeeio/lagoon/tree/master/images/nginx-drupal
+# @see https://github.com/dpc-sdp/bay/blob/master/bay/images/Dockerfile.nginx
 ARG CLI_IMAGE
 FROM ${CLI_IMAGE:-cli} as cli
 
-FROM amazeeio/nginx-drupal
+FROM singledigital/bay-nginx
 
 ENV WEBROOT=docroot
 
