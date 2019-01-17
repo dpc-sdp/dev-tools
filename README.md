@@ -17,18 +17,19 @@ Tools used for development of Tide distribution and modules.
 Run each command as `ahoy <command>`.
 ```
    build                Build or rebuild project.
-   clean                Remove all build files
-   clean-full           Remove all development files
+   clean                Remove all build files.
+   clean-full           Remove all development files.
    cli                  Start a shell inside CLI container or run a command.
-   composer-merge       Merge composer files
+   composer-merge       Merge composer files.
+   doctor               Find problems with current project setup.
    down                 Stop Docker containers and remove container, images, volumes and networks.
    drush                Run drush commands in the CLI service container.
    info                 Print information about this project.
    install-dev          Install dependencies.
-   install-module       Install a module from current repository root
-   install-profile      Install a profile from current repository root
+   install-module       Install a module from current repository root.
+   install-profile      Install a profile from current repository root.
    install-site         Install site.
-   link-package         Link package from current repository root
+   link-package         Link package from current repository root.
    lint                 Lint code.
    login                Login to a website.
    logs                 Show Docker logs.

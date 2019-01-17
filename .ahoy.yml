@@ -31,7 +31,7 @@ commands:
       fi
 
   up:
-    usage: Build and start Docker containers
+    usage: Build and start Docker containers.
     cmd: |
       docker-compose up -d "$@" \
       && ahoy cli "dockerize -wait tcp://mariadb:3306 -timeout 1m" \
@@ -74,9 +74,13 @@ commands:
     usage: Login to a website.
     cmd: ahoy drush uublk 1 -q && ahoy drush uli "$@"
 
+  doctor:
+    usage: Find problems with current project setup.
+    cmd: scripts/doctor.sh
+
   # @note: Call this on the host before starting containers.
   composer-merge:
-    usage: Merge composer files
+    usage: Merge composer files.
     cmd: scripts/composer-merge.sh
 
   install-dev:
@@ -92,19 +96,19 @@ commands:
       && ahoy drush si ${DRUPAL_PROFILE:-testing} -y --db-url=mysql://drupal:drupal@${MYSQL_HOST}/drupal --account-name=admin --account-pass=admin install_configure_form.enable_update_status_module=NULL install_configure_form.enable_update_status_emails=NULL
 
   link-package:
-    usage: Link package from current repository root
+    usage: Link package from current repository root.
     cmd: scripts/link-package.sh
 
   install-module:
-    usage: Install a module from current repository root
+    usage: Install a module from current repository root.
     cmd: ahoy cli "INSTALL_SUGGEST=$INSTALL_SUGGEST scripts/drupal-install-module.sh"
 
   install-profile:
-    usage: Install a profile from current repository root
+    usage: Install a profile from current repository root.
     cmd: ahoy cli "INSTALL_SUGGEST=$INSTALL_SUGGEST scripts/drupal-install-profile.sh"
 
   clean:
-    usage: Remove all build files
+    usage: Remove all build files.
     cmd: |
       ahoy down \
       && ([ -d .git ] && git ls-files --directory --other -i --exclude-from=.gitignore ${WEBROOT} | grep -v "settings.local.php" | grep -v "services.local.yml" | xargs chmod -Rf 777 || true) \
@@ -114,7 +118,7 @@ commands:
       && rm -Rf screenshots
 
   clean-full:
-    usage: Remove all development files
+    usage: Remove all development files.
     cmd: |
       ahoy clean \
       && ([ -d .git ] && git ls-files --directory --other . | grep -v ".idea" | xargs chmod -Rf 777 || true) \
