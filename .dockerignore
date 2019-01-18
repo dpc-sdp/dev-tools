@@ -1,6 +1,11 @@
+.circleci
 .git
 .idea
+*.md
+docker-compose*
+screenshots
+node_modules
+vendor
 /composer.build.lock
 /composer.lock
 docroot
-vendor
