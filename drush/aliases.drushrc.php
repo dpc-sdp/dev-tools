@@ -1,4 +1,11 @@
 <?php
+
+// Only enable aliases if Bay integration was fully setup or this is running
+// in Bay.
+if (!getenv('BAY_INTEGRATION_ENABLED') && !getenv('LAGOON_GIT_BRANCH')) {
+  return;
+}
+
 // Don't change anything here, it's magic!
 global $aliases_stub;
 if (empty($aliases_stub)) {
