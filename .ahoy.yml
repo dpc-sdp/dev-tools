@@ -11,7 +11,7 @@ commands:
       && (docker network prune -f > /dev/null && docker network inspect amazeeio-network > /dev/null || docker network create amazeeio-network) \
       && ahoy up -- --build --force-recreate \
       && ahoy install-dev \
-      && if [ "$DRUPAL_PROFILE" ]; then ahoy install-profile; fi \
+      && if [ "$COMPOSER" != "composer.json" ] && [ "$DRUPAL_PROFILE" ]; then ahoy install-profile; fi \
       && ahoy install-site \
       && if [ "$COMPOSER" != "composer.json" ]; then ahoy install-module; fi \
       && ahoy drush en tide_test -y \
