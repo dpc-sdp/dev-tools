@@ -36,7 +36,14 @@ commands:
       docker-compose up -d "$@" \
       && ahoy cli "dockerize -wait tcp://mariadb:3306 -timeout 1m" \
       && if docker-compose logs | grep -q "\[Error\]"; then docker-compose logs; exit 1; fi \
-      && docker ps -a --filter name=^/${COMPOSE_PROJECT_NAME}_
+      && docker ps -a --filter name=^/${COMPOSE_PROJECT_NAME}_ &&
+      # Add Bay SSH key before fetching DB.
+      # During local development, pygmy injects SSH key from the host, so specifying
+      # key as $BAY_KEY environment variable is not required (the host key of every
+      # developer must be added to Bay during project onboarding).
+      if [ "$BAY_KEY" ]; then
+        ahoy cli "mkdir -p /home/.ssh && echo -e \"$BAY_KEY\" > /home/.ssh/key && chmod 600 /home/.ssh/key;"
+      fi
 
   down:
     usage: Stop Docker containers and remove container, images, volumes and networks.
