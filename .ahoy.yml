@@ -60,7 +60,9 @@ commands:
 
   pull:
     usage: Pull latest docker images.
-    cmd: docker image ls --format \"{{.Repository}}:{{.Tag}}\" | grep amazeeio/ | grep -v none | xargs -n1 docker pull | cat
+    cmd: |
+      docker image ls --format \"{{.Repository}}:{{.Tag}}\" | grep singledigital/ | grep -v none | xargs -n1 docker pull | cat \
+      && docker image ls --format \"{{.Repository}}:{{.Tag}}\" | grep amazeeio/ | grep -v none | xargs -n1 docker pull | cat
 
   cli:
     usage: Start a shell inside CLI container or run a command.
