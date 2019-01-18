@@ -107,14 +107,17 @@ commands:
   link-package:
     usage: Link package from current repository root.
     cmd: scripts/link-package.sh
+    hide: true
 
   install-module:
     usage: Install a module from current repository root.
     cmd: ahoy cli "INSTALL_SUGGEST=$INSTALL_SUGGEST scripts/drupal-install-module.sh"
+    hide: true
 
   install-profile:
     usage: Install a profile from current repository root.
     cmd: ahoy cli "INSTALL_SUGGEST=$INSTALL_SUGGEST scripts/drupal-install-profile.sh"
+    hide: true
 
   clean:
     usage: Remove all build files.

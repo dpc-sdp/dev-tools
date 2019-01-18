@@ -26,10 +26,7 @@ Run each command as `ahoy <command>`.
    drush                Run drush commands in the CLI service container.
    info                 Print information about this project.
    install-dev          Install dependencies.
-   install-module       Install a module from current repository root.
-   install-profile      Install a profile from current repository root.
-   install-site         Install site.
-   link-package         Link package from current repository root.
+   install-site         Install site.   
    lint                 Lint code.
    login                Login to a website.
    logs                 Show Docker logs.
@@ -39,7 +36,6 @@ Run each command as `ahoy <command>`.
    stop                 Stop running Docker containers.
    test-behat           Run Behat tests.
    up                   Build and start Docker containers
-   init                 Initialize a new .ahoy.yml config file in the current directory.
 ```
 
 ## Main ideas behind Dev Tools
