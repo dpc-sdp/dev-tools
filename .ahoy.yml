@@ -24,7 +24,7 @@ commands:
       ahoy line "Site URL              : " ${LOCALDEV_URL}
       ahoy line "Path to project       : " ${APP}
       ahoy line "Path to docroot       : " ${APP}/${WEBROOT}
-      ahoy line "DB port on host       : " $(docker-compose port mariadb 3306 | cut -d : -f 2)
+      ahoy line "DB port on host       : " $(docker port $(docker-compose ps -q mariadb) 3306 | cut -d : -f 2)
       ahoy line "Mailhog URL           : " http://mailhog.docker.amazee.io/
       if [ "$1" ]; then
         ahoy line "One-time login        : " $(ahoy login -- --no-browser)
@@ -64,11 +64,11 @@ commands:
 
   cli:
     usage: Start a shell inside CLI container or run a command.
-    cmd: if \[ "$@" \]; then docker-compose exec cli bash -c "$@"; else docker-compose exec cli bash; fi
+    cmd: if \[ "$@" \]; then docker exec -i $(docker-compose ps -q cli) bash -c "$@"; else docker exec -it $(docker-compose ps -q cli) bash; fi
 
   drush:
     usage: Run drush commands in the CLI service container.
-    cmd: docker-compose exec -T cli drush -r ${APP}/${WEBROOT} -l ${LOCALDEV_URL} "$@"
+    cmd: docker exec -i $(docker-compose ps -q cli) drush -r ${APP}/${WEBROOT} -l ${LOCALDEV_URL} "$@"
 
   login:
     usage: Login to a website.
