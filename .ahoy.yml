@@ -143,7 +143,7 @@ commands:
 
   lint:
     usage: Lint code.
-    cmd: ahoy cli "vendor/bin/phpcs ."
+    cmd: ahoy cli "vendor/bin/phpcs ${PHPCS_TARGETS:-}"
 
   test-behat:
     usage: Run Behat tests.
