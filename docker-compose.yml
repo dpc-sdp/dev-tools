@@ -49,7 +49,7 @@ services:
       context: .
       dockerfile: .docker/Dockerfile.cli
       args:
-        - COMPOSER=${COMPOSER:-composer.build.json}
+        - COMPOSER=${COMPOSER:-composer.json}
     image: *project
     environment:
       << : *default-environment
