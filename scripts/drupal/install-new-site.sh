@@ -19,4 +19,4 @@ WEBROOT=${WEBROOT:-docroot}
 drush -r ${APP}/${WEBROOT} si ${DRUPAL_PROFILE} -y --account-name=${DRUPAL_ADMIN_NAME} --account-pass=${DRUPAL_ADMIN_PASSWORD} install_configure_form.enable_update_status_module=NULL install_configure_form.enable_update_status_emails=NULL --site-name="Single Digital Presence Content Management System"
 drush -r ${APP}/${WEBROOT} ublk 1
 drush -r ${APP}/${WEBROOT} cr -y
-drush -r ${APP}/${WEBROOT} php-eval "$prefix = getenv('DRUPAL_MODULE_PREFIX'); $loaded = module_load_install($prefix . '_core'); if ($loaded) { $func = $prefix . '_core_enable_modules'; $func(TRUE); }"
+drush -r ${APP}/${WEBROOT} php-eval "\$prefix = getenv('DRUPAL_MODULE_PREFIX'); \$loaded = module_load_install(\$prefix . '_core'); if (\$loaded) { \$func = \$prefix . '_core_enable_modules'; \$func(TRUE); }"
