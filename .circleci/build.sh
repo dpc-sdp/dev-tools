@@ -16,4 +16,6 @@ composer validate --ansi --strict --no-check-all --no-check-lock
 sed -i -e "/###/d" docker-compose.yml
 sed -i -e "s/##//" docker-compose.yml
 
+ahoy pull
+
 ahoy build
