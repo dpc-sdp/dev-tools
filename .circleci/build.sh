@@ -5,7 +5,8 @@
 set -e
 
 # Override install profile for CI.
-DRUPAL_PROFILE=testing
+# @todo: Review if we still need this override for CI.
+# DRUPAL_PROFILE=testing
 
 echo "==> Validate composer configuration"
 composer validate --ansi --strict --no-check-all --no-check-lock
