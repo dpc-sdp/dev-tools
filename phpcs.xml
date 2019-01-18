@@ -85,6 +85,6 @@
 
     <!-- Ignore  Prefixing class names with project name in module behat tests.-->
     <rule ref="DrupalPractice.General.ClassName.ClassPrefix">
-        <exclude-pattern>dpc-sdp/*/tests/behat/bootstrap/*\.php</exclude-pattern>
+        <exclude-pattern>*\/tests\/behat\/bootstrap/*\.php</exclude-pattern>
     </rule>
 </ruleset>

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @file
+ * Drush aliases.
+ */
+
 // Only enable aliases if Bay integration was fully setup or this is running
 // in Bay.
 if (!getenv('BAY_INTEGRATION_ENABLED') && !getenv('LAGOON_GIT_BRANCH')) {
@@ -7,6 +12,7 @@ if (!getenv('BAY_INTEGRATION_ENABLED') && !getenv('LAGOON_GIT_BRANCH')) {
 }
 
 // Don't change anything here, it's magic!
+// @codingStandardsIgnoreFile
 global $aliases_stub;
 if (empty($aliases_stub)) {
   $ch = curl_init();
