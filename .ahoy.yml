@@ -99,10 +99,12 @@ commands:
   install-site:
     usage: Install site.
     cmd: |
-      ahoy cli "chmod 777 ${APP}/${WEBROOT}/sites/default" \
-      && ahoy cli "rm -f ${APP}/${WEBROOT}/sites/default/settings.php" \
-      && ahoy cli "rm -f ${APP}/${WEBROOT}/sites/default/services.yml" \
-      && ahoy drush si ${DRUPAL_PROFILE:-testing} -y --db-url=mysql://drupal:drupal@${MYSQL_HOST}/drupal --account-name=admin --account-pass=admin install_configure_form.enable_update_status_module=NULL install_configure_form.enable_update_status_emails=NULL
+      ahoy flush-redis
+      if [ "$INSTALL_NEW_SITE" ]; then
+        ahoy cli -- ./scripts/drupal/install-new-site.sh
+      else
+        ahoy cli -- ./scripts/rebuild-env.sh
+      fi
 
   link-package:
     usage: Link package from current repository root.
@@ -135,6 +137,10 @@ commands:
       && ([ -d .git ] && git ls-files --directory --other . | grep -v ".idea" | xargs chmod -Rf 777 || true) \
       && ([ -d .git ] && git ls-files --directory --other . | grep -v ".idea" | xargs rm -Rf || true)
 
+  deploy:
+    usage: Deploy or re-deploy a branch in Bay.
+    cmd: ./scripts/bay-deploy.sh "$@"
+
   lint:
     usage: Lint code.
     cmd: ahoy cli "vendor/bin/phpcs ."
@@ -142,6 +148,10 @@ commands:
   test-behat:
     usage: Run Behat tests.
     cmd: ahoy cli "./vendor/bin/behat --strict --colors ${BEHAT_PROFILE} $@"
+
+  flush-redis:
+    usage: Flush Redis cache.
+    cmd: docker exec -i $(docker-compose ps -q redis) redis-cli flushall > /dev/null
 
   # Utilities.
   line:
