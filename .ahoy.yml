@@ -151,7 +151,7 @@ entrypoint:
 - "-c"
 - |
   [ -f .env ] && export $(grep -v '^#' .env | xargs) && [ -f .env.local ] && export $(grep -v '^#' .env.local | xargs)
-  PROJECT_NAME=${PROJECT_NAME:-$(basename $(pwd))} && export PROJECT_NAME=${PROJECT_NAME/[_-]/}
+  PROJECT_NAME=${PROJECT_NAME:-$(basename $(pwd))} && export PROJECT_NAME=${PROJECT_NAME/[_]/}
   export APP=${APP:-/app}
   export WEBROOT=${WEBROOT:-docroot}
   export MYSQL_HOST=${MYSQL_HOST:-mariadb}
