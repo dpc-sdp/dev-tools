@@ -22,7 +22,7 @@ x-volumes:
   # override for the same directory as a mounted volume as a commented-out lines,
   # which will be automatically uncommented in CI.
   #
-  # See Docker Compose reference about volumes https://docs.docker.com/compose/compose-file/#short-syntax-3
+  # See Docker Compose reference about volumes https://docs.docker.com/compose/compose-file/compose-file-v2/#volume-configuration-reference
   volumes:
     - .:/app:${VOLUME_FLAGS:-delegated} ### Local overrides to mount host filesystem. Automatically removed in CI and PROD.
     - ./docroot/sites/default/files:/app/docroot/sites/default/files:${VOLUME_FLAGS:-delegated} ### Local overrides to mount host filesystem. Automatically removed in CI and PROD.
@@ -50,6 +50,8 @@ services:
     environment:
       << : *default-environment
     << : *default-volumes
+    volumes_from: ### Local overrides to mount host SSH keys. Automatically removed in CI.
+      - container:amazeeio-ssh-agent ### Local overrides to mount host SSH keys. Automatically removed in CI.
     labels:
       lagoon.type: cli-persistent
       lagoon.persistent.name: nginx
@@ -97,6 +99,11 @@ services:
       - "3306" # Find port on host with `ahoy info` or `docker-compose port mariadb 3306`
     labels:
       lagoon.type: mariadb
+
+  redis:
+    image: amazeeio/redis
+    labels:
+      lagoon.type: redis
 
   elasticsearch:
     build:
