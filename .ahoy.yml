@@ -172,6 +172,7 @@ entrypoint:
   export LOCALDEV_URL=${LOCALDEV_URL:-http://$PROJECT_NAME.docker.amazee.io}
   export COMPOSER=${COMPOSER:-composer.json}
   export DRUPAL_PROFILE=${DRUPAL_PROFILE:-}
+  export DRUPAL_MODULE_PREFIX=${DRUPAL_MODULE_PREFIX:-mysite}
   if [ "$CI" ]; then export ES_TPL=elasticsearch.ci.yml; fi
   bash -c "$0" "$@"
 - '{{cmd}}'
