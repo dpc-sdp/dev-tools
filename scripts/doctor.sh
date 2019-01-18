@@ -35,6 +35,8 @@ main() {
     # @todo: Add more checks for pygmy's services.
   fi
 
+  docker exec -i $(docker-compose ps -q cli) bash -c "ssh-add -L|grep -vq 'ssh-rsa'" && error "SSH key was not added into container. Run 'pygmy restart'."
+
   curl -L -s -o /dev/null -w "%{http_code}" $LOCALDEV_URL | grep -q -v 200 && error "Unable to access $LOCALDEV_URL" && exit 1
 
   if curl -L -s -N $LOCALDEV_URL | grep -q "name=\"Generator\" content=\"Drupal 8"; then
