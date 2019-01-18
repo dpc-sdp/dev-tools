@@ -151,3 +151,16 @@ your project repository.
 ### Branch-based development for module projects 
 #### Use development versions of dependencies
 TBD 
+
+## Maintenance
+To update Dev Tools and release a new version, a special care should be taken as 
+broken Dev Tools will break all project builds.
+
+To make a change:
+1. Create a separate branch in Dev Tools repository.
+2. Make your changes, commit them and make sure the CI passes.
+3. Use one of the `tide_*` modules to run the build. Create a branch in that module's repository.
+4. Modify `dev-init.sh` in that module and specify `GH_COMMIT` value of the commit from step 2.
+5. Commit and make sure that the build passes.
+6. If the build passes, merge the Dev Tools branch to `master` and make a release.
+7. Remove the temporary branch in `tide_*` module from Step 3. 
