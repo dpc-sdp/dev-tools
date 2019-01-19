@@ -11,9 +11,9 @@ commands:
       && (docker network prune -f > /dev/null && docker network inspect amazeeio-network > /dev/null || docker network create amazeeio-network) \
       && ahoy up -- --build --force-recreate \
       && ahoy install-dev \
-      && if [ "$COMPOSER" != "composer.json" ] && [ "$DRUPAL_PROFILE" ]; then ahoy install-profile; fi \
+      && if [ "$COMPOSER" != "composer.json" ] && [ "$DRUPAL_PROFILE" ]; then ahoy init-profile; fi \
       && ahoy install-site \
-      && if [ "$COMPOSER" != "composer.json" ]; then ahoy install-module; fi \
+      && if [ "$COMPOSER" != "composer.json" ]; then ahoy init-module; fi \
       && ahoy drush en tide_test -y \
       && ahoy line "Build complete" \
       && ahoy info 1
@@ -111,14 +111,14 @@ commands:
     cmd: scripts/link-package.sh
     hide: true
 
-  install-module:
+  init-module:
     usage: Install a module from current repository root.
-    cmd: ahoy cli "INSTALL_SUGGEST=$INSTALL_SUGGEST scripts/drupal-install-module.sh"
+    cmd: ahoy cli "INSTALL_SUGGEST=$INSTALL_SUGGEST scripts/drupal-init-module.sh"
     hide: true
 
-  install-profile:
+  init-profile:
     usage: Install a profile from current repository root.
-    cmd: ahoy cli "INSTALL_SUGGEST=$INSTALL_SUGGEST scripts/drupal-install-profile.sh"
+    cmd: ahoy cli "INSTALL_SUGGEST=$INSTALL_SUGGEST scripts/drupal-init-profile.sh"
     hide: true
 
   clean:
