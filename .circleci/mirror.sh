@@ -13,7 +13,7 @@ MIRROR_GIT_PUSH=${MIRROR_GIT_REMOTE:-}
 
 git checkout -b $MIRROR_GIT_BRANCH
 
-if [ "$MIRROR_GIT_PUSH" ]; then
+if [ "$MIRROR_GIT_PUSH" == "1" ]; then
   git push $MIRROR_GIT_REMOTE $MIRROR_GIT_BRANCH --force
 else
   echo "Would push to $MIRROR_GIT_BRANCH"
