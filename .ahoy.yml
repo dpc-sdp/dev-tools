@@ -143,7 +143,7 @@ commands:
 
   lint:
     usage: Lint code.
-    cmd: ahoy cli "vendor/bin/phpcs ${PHPCS_TARGETS:-.}"
+    cmd: ahoy cli "vendor/bin/phpcs ${PHPCS_TARGETS}"
 
   test-behat:
     usage: Run Behat tests.
@@ -173,6 +173,8 @@ entrypoint:
   export COMPOSER=${COMPOSER:-composer.json}
   export DRUPAL_PROFILE=${DRUPAL_PROFILE:-}
   export DRUPAL_MODULE_PREFIX=${DRUPAL_MODULE_PREFIX:-mysite}
+  PHPCS_TARGETS=${PHPCS_TARGETS:-.}
+  export PHPCS_TARGETS=${PHPCS_TARGETS//,/ }
   if [ "$CI" ]; then export ES_TPL=elasticsearch.ci.yml; fi
   bash -c "$0" "$@"
 - '{{cmd}}'
