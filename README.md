@@ -104,27 +104,22 @@ no way to specify optional packages in module files).
 Finally, we install the module itself.
 
 ### FAQs
-**Q: How does the visioning work and why do we have versions set to specific constraints?**
-A: This is to guarantee that our modules work correctly with expected versions. 
-   Otherwise - we cannot guarantee the users of the Tide project that modules 
-   will work together.
-
-**Q: How to specify custom branch for suggested module?**
-A: Just add it as a normal branch constraint to a name of the module: 
+#### How to specify custom branch for suggested module?
+Just add it as a normal branch constraint to a name of the module: 
 ```
     "suggest": {
         "dpc-sdp/tide_api:dev-ci": "Allows to use Drupal in headless mode"
     }
 ```
 
-**Q: What is 'Suggested mode'?**
-A: This is how we test optional configuration. Modules may specify their 
+#### What is 'Suggested mode'?
+This is how we test optional configuration. Modules may specify their 
 optional dependencies using 'suggest' section in `composer.json` file. The CI 
 process for each module runs `build_suggest` build, where these optional modules 
 are enabled. 
 
-**Q: What is `@suggest` and `@nosuggest` tags in tests?**
-A: Tagging a test with `@suggest` means that it will run only for 
+#### What is `@suggest` and `@nosuggest` tags in tests?
+Tagging a test with `@suggest` means that it will run only for 
 *Suggested mode* (see above). 
 Tagging a test with `@nosuggest` means that the test will run only in normal mode. 
 Not providing a tag will run test in both modes.
