@@ -1,4 +1,4 @@
-FROM singledigital/bay-elasticsearch
+FROM amazeeio/elasticsearch:latest
 ARG ES_TPL
 
 ENV ES_TPL=${ES_TPL:-elasticsearch.yml}
