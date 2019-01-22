@@ -100,7 +100,7 @@ commands:
     usage: Install site.
     cmd: |
       ahoy flush-redis
-      if [ "$INSTALL_NEW_SITE" ]; then
+      if [ "$INSTALL_NEW_SITE" == "1" ]; then
         ahoy cli -- ./scripts/drupal/install-new-site.sh
       else
         ahoy cli -- ./scripts/rebuild-env.sh
