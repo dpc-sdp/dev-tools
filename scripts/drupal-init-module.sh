@@ -14,8 +14,7 @@ COMPOSER=${COMPOSER:-composer.build.json}
 APP=${APP:-/app}
 WEBROOT=${WEBROOT:-docroot}
 TEST_PACKAGE_NAME=${TEST_PACKAGE_NAME:-tide_test}
-# @todo: Replace default value with `dev-master`.
-TEST_PACKAGE_VERSION=${TEST_PACKAGE_VERSION:-dev-ci}
+TEST_PACKAGE_VERSION=${TEST_PACKAGE_VERSION:-^1.0}
 
 # Extract module name from the *.info.yml file, if not provided.
 if [ "$PACKAGE_NAME" == "" ]; then
