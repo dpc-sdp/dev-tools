@@ -6,7 +6,8 @@ ENV WEBROOT=docroot \
     COMPOSER_ALLOW_SUPERUSER=1 \
     COMPOSER_CACHE_DIR=/tmp/.composer/cache \
     MYSQL_HOST=mariadb \
-    COMPOSER=${COMPOSER:-composer.json}
+    COMPOSER=${COMPOSER:-composer.json} \
+    DRUPAL_MODULE_PREFIX=${DRUPAL_MODULE_PREFIX:-}
 
 ENV DOCKERIZE_VERSION v0.6.1
 RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
