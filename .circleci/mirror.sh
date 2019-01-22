@@ -7,7 +7,7 @@ set -e
 MIRROR_GIT_BRANCH=${MIRROR_GIT_BRANCH:-$1}
 MIRROR_GIT_REMOTE=${MIRROR_GIT_REMOTE:-origin}
 # Flag to push the branch.
-MIRROR_GIT_PUSH=${MIRROR_GIT_REMOTE:-}
+MIRROR_GIT_PUSH=${MIRROR_GIT_PUSH:-}
 
 [ "$MIRROR_GIT_BRANCH" == "" ] && echo "ERROR: Git branch is not provided" && exit 1
 
