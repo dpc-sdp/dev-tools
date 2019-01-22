@@ -1,7 +1,7 @@
 FROM singledigital/bay-elasticsearch
 ARG ES_TPL
 
-ENV ES_TPL=$ES_TPL
+ENV ES_TPL=${ES_TPL:-elasticsearch.yml}
 
 RUN bin/elasticsearch-plugin install analysis-kuromoji \
     && bin/elasticsearch-plugin install analysis-icu
