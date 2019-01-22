@@ -53,6 +53,6 @@ if [ "$INSTALL_SUGGEST" == "1" ] ; then
   done
 fi
 
-drush en -y ${PACKAGE_NAME}
+drush -r ${APP}/${WEBROOT} en -y ${PACKAGE_NAME}
 
 echo "==> Finished $PACKAGE_NAME module installation"
