@@ -160,10 +160,10 @@ your project repository.
 2. Commit required files. They will not be overridden on next Dev Tools install.
 
 #### Force update overridden Dev Tools files in your project
-`ALLOW_OVERRIDE=1 curl https://raw.githubusercontent.com/dpc-sdp/dev-tools/master/install | bash`
+`ALLOW_OVERRIDE=1 . dev-init.sh`
 
 #### Use Dev Tools at specific commit
-`GH_COMMIT=COMMIT_SHA curl https://raw.githubusercontent.com/dpc-sdp/dev-tools/master/install | bash`
+`GH_COMMIT=COMMIT_SHA . dev-init.sh`
 
 ### Branch-based development for module projects 
 #### Use development versions of dependencies

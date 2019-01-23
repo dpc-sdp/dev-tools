@@ -2,7 +2,7 @@
 ARG CLI_IMAGE
 FROM ${CLI_IMAGE:-cli} as cli
 
-FROM singledigital/bay-nginx
+FROM singledigital/bay-nginx:latest
 
 ENV WEBROOT=docroot
 

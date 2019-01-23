@@ -1,5 +1,5 @@
 # @see https://github.com/dpc-sdp/bay/blob/master/bay/images/Dockerfile.php
-FROM singledigital/bay-cli
+FROM singledigital/bay-cli:latest
 ARG COMPOSER
 
 ENV WEBROOT=docroot \
