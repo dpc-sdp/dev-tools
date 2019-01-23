@@ -2,7 +2,7 @@
 ARG CLI_IMAGE
 FROM ${CLI_IMAGE:-cli} as cli
 
-FROM singledigital/bay-php
+FROM singledigital/bay-php:latest
 
 # Antivirus update returns non-zero codes.
 # @see https://github.com/clamwin/clamav/blob/0.100.1/freshclam/freshclamcodes.h#L23

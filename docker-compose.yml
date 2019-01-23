@@ -58,8 +58,8 @@ services:
       - container:amazeeio-ssh-agent ### Local overrides to mount host SSH keys. Automatically removed in CI.
     labels:
       lagoon.type: cli-persistent
-      lagoon.persistent.name: nginx
       lagoon.persistent: /app/docroot/sites/default/files/
+      lagoon.persistent.name: nginx-php
 
   nginx:
     build:
@@ -78,7 +78,10 @@ services:
     labels:
       lagoon.type: nginx-php-persistent
       lagoon.persistent: /app/docroot/sites/default/files/
-
+      lagoon.persistent.class: slow
+      lagoon.name: nginx-php
+    expose:
+    - "8080"
   php:
     build:
       context: .
@@ -92,8 +95,9 @@ services:
       - cli
     labels:
       lagoon.type: nginx-php-persistent
-      lagoon.name: nginx
       lagoon.persistent: /app/docroot/sites/default/files/
+      lagoon.persistent.class: slow
+      lagoon.name: nginx-php
 
   mariadb:
     image: amazeeio/mariadb-drupal
