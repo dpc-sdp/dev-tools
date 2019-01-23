@@ -96,13 +96,13 @@ services:
       lagoon.persistent: /app/docroot/sites/default/files/
 
   mariadb:
-    image: singledigital/bay-mariadb
+    image: amazeeio/mariadb-drupal
     environment:
       << : *default-environment
     ports:
-      - "3306" # Find port on host with `ahoy info` or `docker-compose port mariadb 3306`
+    - "3306" # Find port on host with `ahoy info` or `docker-compose port mariadb 3306`
     labels:
-      lagoon.type: mariadb
+      lagoon.type: mariadb-shared
 
   redis:
     image: amazeeio/redis
