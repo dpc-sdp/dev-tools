@@ -163,18 +163,17 @@ entrypoint:
 - "-c"
 - |
   [ -f .env ] && export $(grep -v '^#' .env | xargs) && [ -f .env.local ] && export $(grep -v '^#' .env.local | xargs)
-  PROJECT_NAME=${PROJECT_NAME:-$(basename $(pwd))} && export PROJECT_NAME=${PROJECT_NAME/[_]/}
+  export PROJECT_NAME=${PROJECT_NAME:-$(basename $(pwd))}
   export APP=${APP:-/app}
   export WEBROOT=${WEBROOT:-docroot}
   export MYSQL_HOST=${MYSQL_HOST:-mariadb}
   export MYSQL_PORT=${MYSQL_PORT:-3306}
   export COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME:-$PROJECT_NAME}
-  export LOCALDEV_URL=${LOCALDEV_URL:-http://$PROJECT_NAME.docker.amazee.io}
+  export LOCALDEV_URL=${LOCALDEV_URL:-http://${PROJECT_NAME/[_ ]/-}.docker.amazee.io}
   export COMPOSER=${COMPOSER:-composer.json}
   export DRUPAL_PROFILE=${DRUPAL_PROFILE:-}
   export DRUPAL_MODULE_PREFIX=${DRUPAL_MODULE_PREFIX:-mysite}
-  PHPCS_TARGETS=${PHPCS_TARGETS:-.}
-  export PHPCS_TARGETS=${PHPCS_TARGETS//,/ }
+  PHPCS_TARGETS=${PHPCS_TARGETS:-.} && export PHPCS_TARGETS=${PHPCS_TARGETS//,/ }
   if [ "$CI" ]; then export ES_TPL=elasticsearch.ci.yml; fi
   bash -c "$0" "$@"
 - '{{cmd}}'
