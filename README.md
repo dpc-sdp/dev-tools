@@ -104,8 +104,7 @@ no way to specify optional packages in module files).
 Finally, we install the module itself.
 
 ## Releases and versions
-There are 2 types of versioning used:
-- For projects, we use [SemVer 2.0.0](https://semver.org/spec/v2.0.0.html):
+- For projects and modules, we use [SemVer 2.0.0](https://semver.org/spec/v2.0.0.html):
   ```
 	1.0.0
 	1.2.0
@@ -113,17 +112,6 @@ There are 2 types of versioning used:
 	1.2.3-alpha.1
 	1.2.3-alpha.1.2
   ```	
-- For modules, we use [Drupal release naming conventions](https://www.drupal.org/node/1015226):
-  ```
-  8.x-0.1
-  8.x-0.1-alpha1
-  8.x-0.1-alpha2
-  8.x-1.2
-  ```
-
-Note the difference in the notation of pre-release versions for projects and modules: `-alpha.1` vs `-alpha1`. 
-
-Also, there are no patch-level pre-release versions for modules, e.g. cannot do `-alpha1.2.3`.
 
 ### FAQs
 #### How to specify custom branch for suggested module?
