@@ -114,6 +114,17 @@ Finally, we install the module itself.
   ```	
 
 ### FAQs
+#### How to use Xdebug?
+1. Uncomment this line in `docker-compose.yml`:
+  ```
+  #XDEBUG_ENABLE: "true"
+  ```
+2. Restart the stack: `ahoy up`.
+3. Enable listening for incoming debug connections in your IDE.
+4. If required, provide server URL to your IDE as it appears in the browser: `http://<YOURSITE>.docker.amazee.io`
+5. Enable Xdebug flag in the request coming from your browser.
+6. Set a breakpoint in your IDE and perform a request in browser. 
+
 #### How to specify custom branch for suggested module?
 Just add it as a normal branch constraint to a name of the module: 
 ```
