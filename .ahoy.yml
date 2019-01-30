@@ -81,7 +81,7 @@ commands:
 
   login:
     usage: Login to a website.
-    cmd: ahoy drush uublk 1 -q && ahoy drush uli "$@"
+    cmd: ahoy drush uublk 1 -q && ahoy drush uli "$@" | xargs open
 
   doctor:
     usage: Find problems with current project setup.
@@ -105,6 +105,22 @@ commands:
       else
         ahoy cli -- ./scripts/rebuild-env.sh
       fi
+
+  db-import:
+    usage: Import the production database.
+    cmd: ahoy cli -- ./scripts/rebuild-env.sh
+
+  fix-bay-token:
+    usage: Fix the bay token by re-importing.
+    cmd: |
+      pygmy stop \
+      && sleep 1 \
+      && pygmy start \
+      && docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm \
+      && docker-compose up -d --force \
+      && pygmy stop \
+      && sleep 1 \
+      && pygmy start
 
   link-package:
     usage: Link package from current repository root.
