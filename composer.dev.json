@@ -182,12 +182,13 @@
         ],
         "post-install-cmd": [
             "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-            "rm -f docroot/sites/default/settings.php",
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
             "Utilities\\composer\\DrupalSettings::create"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "Utilities\\composer\\DrupalSettings::create"
         ]
     },
     "extra": {
