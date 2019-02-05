@@ -106,10 +106,6 @@ commands:
         ahoy cli -- ./scripts/rebuild-env.sh
       fi
 
-  db-import:
-    usage: Import the production database.
-    cmd: ahoy cli -- ./scripts/rebuild-env.sh
-
   fix-bay-token:
     usage: Fix the bay token by re-importing.
     cmd: |
