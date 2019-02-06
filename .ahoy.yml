@@ -144,7 +144,8 @@ commands:
       && ([ -d .git ] && git ls-files --directory --other -i --exclude-from=.gitignore ${WEBROOT} | grep -v "settings.local.php" | grep -v "services.local.yml" | xargs chmod -Rf 777 || true) \
       && ([ -d .git ] && git ls-files --directory --other -i --exclude-from=.gitignore ${WEBROOT} | grep -v "settings.local.php" | grep -v "services.local.yml" | xargs rm -Rf || true) \
       && rm -Rf vendor \
-      && rm -Rf screenshots
+      && rm -Rf screenshots \
+      && rm -Rf composer.build.*
 
   clean-full:
     usage: Remove all development files.
