@@ -14,4 +14,4 @@ sed -i -e "s/##//" docker-compose.yml
 
 ahoy pull
 
-ahoy build
+ahoy rebuild

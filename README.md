@@ -11,7 +11,7 @@ Tools used for development of Tide distribution and modules.
 ## Local environment setup
 3. `curl https://raw.githubusercontent.com/dpc-sdp/dev-tools/master/install | bash`
 4. `pygmy up`
-5. `ahoy build` 
+5. `ahoy rebuild` 
 
 ## Available `ahoy` commands
 Run each command as `ahoy <command>`.
@@ -79,8 +79,9 @@ configuration variables are available.
 
 More specifically, for module projects, to enable local development (and CI) 
 the Dev Tools needs to be fetched, composer configuration needs to be merged and 
-a project needs to be built. All this is handled with a single `ahoy build`
-command. 
+a project needs to be built. All this is handled with a single `ahoy rebuild`
+command. A simplified version, `ahoy build` is available, which does not perform
+an `ahoy clean` before building.
 Dev Tools also supports symlinking of current module files into Drupal project 
 to support development.
 
