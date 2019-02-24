@@ -21,7 +21,7 @@ commands:
   build:
     usage: Build project.
     cmd: |
-      ahoy up \
+      ahoy up -- --build --force-recreate \
       && ahoy install-dev \
       && if [ "$COMPOSER" != "composer.json" ] && [ "$DRUPAL_PROFILE" ]; then ahoy init-profile; fi \
       && ahoy install-site \
