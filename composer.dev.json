@@ -251,6 +251,9 @@
             },
             "cweagans/composer-patches": {
                 "Fix for already applied patches - specific to 1.6.5": "patches/composer-patches/fix-applied-patches.patch"
+            },
+            "drupal-composer/drupal-scaffold": {
+                "PrestissimoFileFetcher errors with newest Curl Version 7.64.0 - https://github.com/drupal-composer/drupal-scaffold/issues/102": "https://patch-diff.githubusercontent.com/raw/drupal-composer/drupal-scaffold/pull/103.patch"
             }
         }
     }
