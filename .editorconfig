@@ -1,2 +1,2 @@
-[composer.{json,lock}]
+[composer.{json,lock,dev.json}]
 indent_size = 4
