@@ -2,25 +2,19 @@
 FROM singledigital/bay-cli:latest
 ARG COMPOSER
 
-ENV WEBROOT=docroot \
-    COMPOSER_ALLOW_SUPERUSER=1 \
-    COMPOSER_CACHE_DIR=/tmp/.composer/cache \
-    MYSQL_HOST=mariadb \
+ENV MYSQL_HOST=mariadb \
     COMPOSER=${COMPOSER:-composer.json} \
     DRUPAL_MODULE_PREFIX=${DRUPAL_MODULE_PREFIX:-}
 
-ENV DOCKERIZE_VERSION v0.6.1
-RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-    && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-    && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+
 
 # Antivirus update returns non-zero codes.
 # @see https://github.com/clamwin/clamav/blob/0.100.1/freshclam/freshclamcodes.h#L23
-RUN apk --update add jq clamav clamav-libunrar \
-    && freshclam --no-warnings || true
+RUN  freshclam --no-warnings || true
 
 ADD patches /app/patches
 ADD scripts /app/scripts
+ADD dpc-sdp /app/dpc-sdp
 
 COPY composer.json .env composer.* /app/
 
