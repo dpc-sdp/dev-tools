@@ -178,6 +178,7 @@ commands:
 entrypoint:
 - bash
 - "-c"
+- "-e"
 - |
   [ -f .env ] && export $(grep -v '^#' .env | xargs) && [ -f .env.local ] && export $(grep -v '^#' .env.local | xargs)
   export PROJECT_NAME=${PROJECT_NAME:-$(basename $(pwd))}
@@ -192,6 +193,6 @@ entrypoint:
   export DRUPAL_MODULE_PREFIX=${DRUPAL_MODULE_PREFIX:-mysite}
   PHPCS_TARGETS=${PHPCS_TARGETS:-.} && export PHPCS_TARGETS=${PHPCS_TARGETS//,/ }
   if [ "$CI" ]; then export ES_TPL=elasticsearch.ci.yml; fi
-  bash -c "$0" "$@"
+  bash -e -c "$0" "$@"
 - '{{cmd}}'
 - '{{name}}'
