@@ -179,4 +179,5 @@ To make a change:
 4. Modify `dev-tools.sh` in that module and specify `GH_COMMIT` value of the commit from step 2.
 5. Commit and make sure that the build passes.
 6. If the build passes, merge the Dev Tools branch to `master` and make a release.
+    - NOTE: This must be a release in GitHub, see https://github.com/dpc-sdp/dev-tools/releases/new
 7. Remove the temporary branch in `tide_*` module from Step 3. 
