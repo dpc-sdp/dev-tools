@@ -150,7 +150,7 @@ Not providing a tag will run test in both modes.
 ### Using Dev Tools
 #### Init Dev Tools in your project
 `curl https://raw.githubusercontent.com/dpc-sdp/dev-tools/master/install | bash`
-or commit `dev-init.sh` to your project and execute it as `. dev-init.sh`.
+or commit `dev-tools.sh` to your project and execute it as `. dev-tools.sh`.
 This will install the latest published release of Dev Tools.
 
 #### Override Dev Tools files in your project
@@ -159,10 +159,10 @@ your project repository.
 2. Commit required files. They will not be overridden on next Dev Tools install.
 
 #### Force update overridden Dev Tools files in your project
-`ALLOW_OVERRIDE=1 . dev-init.sh`
+`ALLOW_OVERRIDE=1 . dev-tools.sh`
 
 #### Use Dev Tools at specific commit
-`GH_COMMIT=COMMIT_SHA . dev-init.sh`
+`GH_COMMIT=COMMIT_SHA . dev-tools.sh`
 
 ### Branch-based development for module projects 
 #### Use development versions of dependencies
@@ -176,7 +176,8 @@ To make a change:
 1. Create a separate branch in Dev Tools repository.
 2. Make your changes, commit them and make sure the CI passes.
 3. Use one of the `tide_*` modules to run the build. Create a branch in that module's repository.
-4. Modify `dev-init.sh` in that module and specify `GH_COMMIT` value of the commit from step 2.
+4. Modify `dev-tools.sh` in that module and specify `GH_COMMIT` value of the commit from step 2.
 5. Commit and make sure that the build passes.
 6. If the build passes, merge the Dev Tools branch to `master` and make a release.
+    - NOTE: This must be a release in GitHub, see https://github.com/dpc-sdp/dev-tools/releases/new
 7. Remove the temporary branch in `tide_*` module from Step 3. 
