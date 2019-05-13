@@ -33,7 +33,7 @@ fi
 [ "${PACKAGE_NAME}" != "${TEST_PACKAGE_NAME}" ] && COMPOSER_MEMORY_LIMIT=-1 composer require --prefer-source ${PACKAGE_ORG}/${TEST_PACKAGE_NAME}:${TEST_PACKAGE_VERSION}
 
 # Require module from local repository.
-composer require --prefer-source ${PACKAGE_ORG}/${PACKAGE_NAME}:@dev
+COMPOSER_MEMORY_LIMIT=-1 composer require --prefer-source ${PACKAGE_ORG}/${PACKAGE_NAME}:@dev
 
 # If running with suggested modules, install them first.
 if [ "$INSTALL_SUGGEST" == "1" ] ; then
