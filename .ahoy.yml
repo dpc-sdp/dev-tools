@@ -94,7 +94,10 @@ commands:
 
   install-dev:
     usage: Install dependencies.
-    cmd: ahoy cli "composer install -n --ansi --prefer-dist --no-suggest"
+    cmd: |
+      ahoy cli "echo "memory_limit=-1" >> /usr/local/etc/php/conf.d/memory.ini"
+      ahoy cli "composer install"
+      ahoy cli "rm -rf /usr/local/etc/php/conf.d/memory.ini"
 
   install-site:
     usage: Install site.
