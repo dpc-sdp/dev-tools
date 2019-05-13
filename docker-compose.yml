@@ -53,6 +53,7 @@ services:
     image: *project
     environment:
       << : *default-environment
+      COMPOSER_MEMORY_LIMIT: -1
     << : *default-volumes
     volumes_from: ### Local overrides to mount host SSH keys. Automatically removed in CI.
       - container:amazeeio-ssh-agent ### Local overrides to mount host SSH keys. Automatically removed in CI.
