@@ -73,7 +73,7 @@ commands:
 
   cli:
     usage: Start a shell inside CLI container or run a command.
-    cmd: if \[ "$@" \]; then docker exec -i $(docker-compose ps -q cli) bash -c "$@"; else docker exec -it $(docker-compose ps -q cli) bash; fi
+    cmd: if \[ "$@" \]; then docker exec -i $(docker-compose ps -q cli) bash -c "COMPOSER_MEMORY_LIMIT=-1 $@"; else docker exec -it $(docker-compose ps -q cli) bash; fi
 
   drush:
     usage: Run drush commands in the CLI service container.
@@ -190,6 +190,7 @@ entrypoint:
   export COMPOSER=${COMPOSER:-composer.json}
   export DRUPAL_PROFILE=${DRUPAL_PROFILE:-}
   export DRUPAL_MODULE_PREFIX=${DRUPAL_MODULE_PREFIX:-mysite}
+  export COMPOSER_MEMORY_LIMIT=-1
   PHPCS_TARGETS=${PHPCS_TARGETS:-.} && export PHPCS_TARGETS=${PHPCS_TARGETS//,/ }
   if [ "$CI" ]; then export ES_TPL=elasticsearch.ci.yml; fi
   bash -c "$0" "$@"

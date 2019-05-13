@@ -16,6 +16,8 @@ WEBROOT=${WEBROOT:-docroot}
 TEST_PACKAGE_NAME=${TEST_PACKAGE_NAME:-tide_test}
 TEST_PACKAGE_VERSION=${TEST_PACKAGE_VERSION:-^1.0}
 
+echo "==> COMPOSER_MEMORY_LIMIT=$COMPOSER_MEMORY_LIMIT"
+
 # Extract module name from the *.info.yml file, if not provided.
 if [ "$PACKAGE_NAME" == "" ]; then
   PACKAGE_NAME=$(find * -maxdepth 0 -name '*.info.yml'|cut -d. -f1)
@@ -30,10 +32,10 @@ else
 fi
 
 # Require an additional test package.
-[ "${PACKAGE_NAME}" != "${TEST_PACKAGE_NAME}" ] && COMPOSER_MEMORY_LIMIT=-1 composer require --prefer-source ${PACKAGE_ORG}/${TEST_PACKAGE_NAME}:${TEST_PACKAGE_VERSION}
+[ "${PACKAGE_NAME}" != "${TEST_PACKAGE_NAME}" ] && composer require --prefer-source ${PACKAGE_ORG}/${TEST_PACKAGE_NAME}:${TEST_PACKAGE_VERSION}
 
 # Require module from local repository.
-COMPOSER_MEMORY_LIMIT=-1 composer require --prefer-source ${PACKAGE_ORG}/${PACKAGE_NAME}:@dev
+composer require --prefer-source ${PACKAGE_ORG}/${PACKAGE_NAME}:@dev
 
 # If running with suggested modules, install them first.
 if [ "$INSTALL_SUGGEST" == "1" ] ; then
@@ -41,7 +43,7 @@ if [ "$INSTALL_SUGGEST" == "1" ] ; then
   for composer_suggest in $composer_suggests
   do
     echo "==> Requiring suggested module $composer_suggest"
-    COMPOSER_MEMORY_LIMIT=-1 composer require $composer_suggest
+    composer require $composer_suggest
   done
 
   drupal_suggests=$(cat ${COMPOSER} | jq -r 'select(.suggest != null) | .suggest | keys_unsorted[]' | sed "s/$PACKAGE_ORG\///" | cut -f1 -d":")
