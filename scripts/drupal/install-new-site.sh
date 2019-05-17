@@ -15,5 +15,5 @@ drush -r ${APP}/${WEBROOT} ublk 1
 drush -r ${APP}/${WEBROOT} cr -y
 if [ ! -z "${DRUPAL_MODULE_PREFIX+x}" ]; then
   drush -r ${APP}/${WEBROOT} en ${DRUPAL_MODULE_PREFIX}_core -y
-  drush -r ${APP}/${WEBROOT} php-eval "\$prefix = getenv('DRUPAL_MODULE_PREFIX'); \$func = \$prefix . '_core_enable_modules'; \$func(TRUE);"
+  drush -r ${APP}/${WEBROOT} php-eval "\$prefix = getenv('DRUPAL_MODULE_PREFIX'); \$loaded = module_load_install(\$prefix . '_core'); if (\$loaded) { \$func = \$prefix . '_core_enable_modules'; \$func(TRUE); }"
 fi
