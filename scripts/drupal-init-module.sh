@@ -16,6 +16,8 @@ WEBROOT=${WEBROOT:-docroot}
 TEST_PACKAGE_NAME=${TEST_PACKAGE_NAME:-tide_test}
 TEST_PACKAGE_VERSION=${TEST_PACKAGE_VERSION:-^1.0}
 
+echo "==> COMPOSER_MEMORY_LIMIT=$COMPOSER_MEMORY_LIMIT"
+
 # Extract module name from the *.info.yml file, if not provided.
 if [ "$PACKAGE_NAME" == "" ]; then
   PACKAGE_NAME=$(find * -maxdepth 0 -name '*.info.yml'|cut -d. -f1)
