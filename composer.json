@@ -4,9 +4,9 @@
     "license": "GPL-2.0-or-later",
     "type": "drupal-module",
     "require": {
-        "dpc-sdp/tide_core": "dev-feature/SDPA-2523_redo_SDPA-309 as 1.2.1"
+        "dpc-sdp/tide_core": "1.2.2"
     },
     "suggest": {
-        "dpc-sdp/tide_media:1.2.2": "Media and related configuration for Tide Drupal 8 distribution"
+        "dpc-sdp/tide_media:1.2.3": "Media and related configuration for Tide Drupal 8 distribution"
     }
 }
