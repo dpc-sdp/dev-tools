@@ -21,5 +21,5 @@ if [ "$DRUPAL_REFRESH_SEARCHAPI" ]; then
   echo "==> Refreshing Search API"
   drush search-api-enable
   drush search-api-clear
-  drush search-api-index 0 50
+  drush search-api-index
 fi
