@@ -15,6 +15,7 @@
     <config name="testVersion" value="7.1"/>
 
     <exclude-pattern>*/docroot/*</exclude-pattern>
+    <exclude-pattern>*/console/*</exclude-pattern>
     <exclude-pattern>settings.generated.php</exclude-pattern>
     <exclude-pattern>*/vendor/*</exclude-pattern>
     <exclude-pattern>circle\.yml</exclude-pattern>
