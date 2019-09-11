@@ -4,8 +4,10 @@
 #
 set -e
 
-SCREENSHOT_DIR="$(docker exec $(docker-compose ps -q cli) sh -c "test -d /app/screenshots" && echo $?)"
+# Create screenshots directory in case it was not created before. This is to
+# avoid this script to fail when copying artifacts.
+ahoy cli "mkdir -p /app/screenshots"
 
-if [[ $SCREENSHOT_DIR == 0 ]]; then
-  docker cp $(docker-compose ps -q cli):/app/screenshots /tmp/artifacts/behat
-fi
+# Copy from the app container to the build host for storage.
+mkdir -p /tmp/artifacts/behat
+docker cp $(docker-compose ps -q cli):/app/screenshots /tmp/artifacts/behat
