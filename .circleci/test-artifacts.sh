@@ -4,4 +4,8 @@
 #
 set -e
 
-docker cp $(docker-compose ps -q cli):/app/screenshots /tmp/artifacts/behat
+SCREENSHOT_DIR="$(docker exec $(docker-compose ps -q cli) sh -c "test -d /app/screenshots" && echo $?)"
+
+if [[ $SCREENSHOT_DIR == 0 ]]; then
+  docker cp $(docker-compose ps -q cli):/app/screenshots /tmp/artifacts/behat
+fi
