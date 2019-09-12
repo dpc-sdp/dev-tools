@@ -5,6 +5,9 @@
 # - Use inline comments starting with ### to have the line removed in CI.
 version: '2.3'
 
+x-bay-image-version:
+  &bay-image-version ${BAY_IMAGE_VERSION:-edge}
+
 x-project:
   &project ${PROJECT_NAME:-mysite}
 
@@ -37,6 +40,7 @@ x-environment:
   LAGOON_LOCALDEV_URL: ${LOCALDEV_URL:-http://mysite.docker.amazee.io}
   GITHUB_TOKEN: ${GITHUB_TOKEN:-}
   BAY_KEY: ${BAY_KEY:-}
+  BAY_IMAGE_VERSION: ${BAY_IMAGE_VERSION:-edge}
   LAGOON_ENVIRONMENT_TYPE: ${LAGOON_ENVIRONMENT_TYPE:-local}
   DRUPAL_REFRESH_SEARCHAPI: ${DRUPAL_REFRESH_SEARCHAPI:-}
   # Uncomment to enable Xdebug and then restart via `ahoy up`.
@@ -49,7 +53,8 @@ services:
       context: .
       dockerfile: .docker/Dockerfile.cli
       args:
-        - COMPOSER=${COMPOSER:-composer.json}
+        COMPOSER: ${COMPOSER:-composer.json}
+        BAY_IMAGE_VERSION: *bay-image-version
     image: *project
     environment:
       << : *default-environment
@@ -68,6 +73,7 @@ services:
       dockerfile: .docker/Dockerfile.nginx-drupal
       args:
         CLI_IMAGE: *project
+        BAY_IMAGE_VERSION: *bay-image-version
     << : *default-volumes
     environment:
       << : *default-environment
@@ -89,6 +95,7 @@ services:
       dockerfile: .docker/Dockerfile.php
       args:
         CLI_IMAGE: *project
+        BAY_IMAGE_VERSION: *bay-image-version
     environment:
       << : *default-environment
     << : *default-volumes
