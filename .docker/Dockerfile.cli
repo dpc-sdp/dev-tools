@@ -25,6 +25,3 @@ RUN echo "memory_limit=-1" >> /usr/local/etc/php/conf.d/memory.ini \
     && rm -rf /usr/local/etc/php/conf.d/memory.ini
 
 COPY . /app
-
-RUN chgrp -R 0 /app/.keys && \
-    chmod -R 660 /app/.keys/*
