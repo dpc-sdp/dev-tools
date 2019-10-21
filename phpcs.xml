@@ -14,7 +14,13 @@
     key "config.platform.php".-->
     <config name="testVersion" value="7.1"/>
 
-    <exclude-pattern>*/docroot/*</exclude-pattern>
+    <exclude-pattern>*/docroot/*\.php</exclude-pattern>
+    <exclude-pattern>*/docroot/core/*</exclude-pattern>
+    <exclude-pattern>*/docroot/libraries/*</exclude-pattern>
+    <exclude-pattern>*/docroot/modules/contrib/*</exclude-pattern>
+    <exclude-pattern>*/docroot/profiles/*</exclude-pattern>
+    <exclude-pattern>*/docroot/themes/contrib/*</exclude-pattern>
+    <exclude-pattern>*/docroot/sites/*/files/*</exclude-pattern>
     <exclude-pattern>*/console/*</exclude-pattern>
     <exclude-pattern>settings.generated.php</exclude-pattern>
     <exclude-pattern>*/vendor/*</exclude-pattern>
