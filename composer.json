@@ -4,9 +4,9 @@
     "license": "GPL-2.0-or-later",
     "type": "drupal-module",
     "require": {
-        "dpc-sdp/tide_core": "1.2.5"
+        "dpc-sdp/tide_core": "^1.2.5"
     },
     "suggest": {
-        "dpc-sdp/tide_media:1.2.5": "Media and related configuration for Tide Drupal 8 distribution"
+        "dpc-sdp/tide_media:^1.2.5": "Media and related configuration for Tide Drupal 8 distribution"
     }
 }
