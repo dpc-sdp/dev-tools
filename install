@@ -33,8 +33,7 @@ if [ "$GH_COMMIT" != "" ]; then
 else
   echo "==> Downloading the latest version of Dev Tools"
   curl -s -L "https://api.github.com/repos/$GH_ORG/$GH_PROJECT/releases/latest" \
-    | grep '"tag_name":' \
-    | sed -E 's/.*"([^"]+)".*/\1/' \
+    | sed -E 's/.*tag_name":\s*"([^,]*)",.*/\1/'
     | xargs -I {} curl -L "https://github.com/$GH_ORG/$GH_PROJECT/archive/"{}'.tar.gz' \
     | tar xvzf - -C $TMP_DIR --strip 1
 fi
