@@ -1,11 +1,9 @@
 # @see https://github.com/dpc-sdp/bay/blob/master/bay/images/Dockerfile.php
 ARG CLI_IMAGE
+ARG BAY_IMAGE_VERSION=latest
+
 FROM ${CLI_IMAGE:-cli} as cli
 
-FROM singledigital/bay-php:latest
-
-# Antivirus update returns non-zero codes.
-# @see https://github.com/clamwin/clamav/blob/0.100.1/freshclam/freshclamcodes.h#L23
-RUN  freshclam --no-warnings || true
+FROM singledigital/bay-php:${BAY_IMAGE_VERSION}
 
 COPY --from=cli /app /app
