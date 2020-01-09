@@ -170,6 +170,10 @@ commands:
     usage: Flush Redis cache.
     cmd: docker exec -i $(docker-compose ps -q redis) redis-cli flushall > /dev/null
 
+  set-dev-tools-commit:
+    usage: Specify a commit of Dev-Tools to downloaded and commit the result.
+    cmd: sed  -i '' 's/.*GH_COMMIT.*/'"export GH_COMMIT=$1"'/' dev-tools.sh
+
   # Utilities.
   line:
     cmd: printf "$(tput -Txterm setaf 2)${1}$(tput -Txterm sgr0)${2}\n"
