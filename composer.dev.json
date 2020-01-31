@@ -35,7 +35,7 @@
     "minimum-stability": "dev",
     "config": {
         "platform": {
-            "php": "7.1"
+            "php": "7.2"
         },
         "process-timeout": 0,
         "sort-packages": true
