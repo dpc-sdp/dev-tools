@@ -48,6 +48,16 @@
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         },
+        "dpc-sdp/baywatch": {
+            "type": "vcs",
+            "no-api": true,
+            "url": "https://github.com/dpc-sdp/baywatch.git"
+        },
+        "drupal/section_purger": {
+            "type": "vcs",
+            "no-api": true,
+            "url": "https://github.com/section/section_purger.git"
+        },
         "dpc-sdp/tide": {
             "type": "vcs",
             "no-api": true,
