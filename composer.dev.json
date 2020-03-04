@@ -284,11 +284,6 @@
             "docroot/sites/default/files",
             "docroot/robots.txt",
             "docroot/.htaccess"
-        ],
-        "patches": {
-            "behat/gherkin": {
-                "Correctly filter features, now that the base path is correctly set": "https://github.com/Behat/Gherkin/compare/v4.6.0...a7d84eb6ba245ea268a304312d14660788bf6c29.patch"
-            }
-        }
+        ]
     }
 }
