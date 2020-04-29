@@ -145,6 +145,11 @@ Tagging a test with `@suggest` means that it will run only for
 Tagging a test with `@nosuggest` means that the test will run only in normal mode. 
 Not providing a tag will run test in both modes.
 
+#### How to use prepopulated database images?
+In the `.env` file for the tide project, set the `MYSQL_IMAGE` variable with the 
+image registry location. Omitting this value will default to the standard 
+amazeeio image. 
+
 ## Workflow recipes
 
 ### Using Dev Tools

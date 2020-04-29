@@ -109,7 +109,7 @@ services:
       lagoon.name: nginx-php
 
   mariadb:
-    image: amazeeio/mariadb-drupal
+    image: ${MYSQL_IMAGE:-amazeeio/mariadb-drupal}
     environment:
       << : *default-environment
     ports:

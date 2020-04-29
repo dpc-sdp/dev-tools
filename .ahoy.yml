@@ -33,6 +33,11 @@ commands:
   up:
     usage: Build and start Docker containers.
     cmd: |
+      # Log into to Github docker registry if custom MYSQL_IMAGE is set.
+      if [ "$MYSQL_IMAGE" ]; then
+        GITHUB_USER=$(curl -sSL -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/user | jq -r .login)
+        echo $GITHUB_TOKEN | docker login docker.pkg.github.com -u "${GITHUB_USER}" --password-stdin
+      fi
       docker-compose up -d "$@" \
       && ahoy cli "dockerize -wait tcp://mariadb:3306 -timeout 1m" \
       && if docker-compose logs | grep -q "\[Error\]"; then docker-compose logs; exit 1; fi \
@@ -102,6 +107,9 @@ commands:
       ahoy flush-redis
       if [ "$INSTALL_NEW_SITE" == "1" ]; then
         ahoy cli -- ./scripts/drupal/install-new-site.sh
+      elif [ "${MYSQL_IMAGE}" ]; then
+        ahoy line "DB image ${MYSQL_IMAGE} in use - skipping sync"
+        ahoy cli -- ./scripts/drupal/deploy.sh
       else
         ahoy cli -- ./scripts/rebuild-env.sh
       fi
