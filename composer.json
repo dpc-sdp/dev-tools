@@ -4,7 +4,7 @@
     "license": "GPL-2.0-or-later",
     "type": "drupal-module",
     "require": {
-        "dpc-sdp/tide_core": "^1.2.5"
+        "dpc-sdp/tide_core": "dev-feature/SDPA-4225-Update-SDP-core-to-Drupal-8-8-5 as 1.5.9"
     },
     "suggest": {
         "dpc-sdp/tide_media:^1.2.5": "Media and related configuration for Tide Drupal 8 distribution"
