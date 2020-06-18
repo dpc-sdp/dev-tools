@@ -14,7 +14,7 @@ commands:
       && if [ "$COMPOSER" != "composer.json" ] && [ "$DRUPAL_PROFILE" ]; then ahoy init-profile; fi \
       && ahoy install-site \
       && if [ "$COMPOSER" != "composer.json" ]; then ahoy init-module; fi \
-      && ahoy drush en tide_test -y \
+      && if [ "$COMPOSER" != "composer.json" ]; then ahoy drush en tide_test -y; fi \
       && ahoy line "Build complete" \
       && ahoy info 1
 
