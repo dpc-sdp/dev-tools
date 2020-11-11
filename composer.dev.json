@@ -197,21 +197,6 @@
                 }
             }
         },
-        "ckeditor/liststyle": {
-            "type": "package",
-            "package": {
-                "name": "ckeditor/liststyle",
-                "version": "4.8.0",
-                "type": "drupal-library",
-                "extra": {
-                    "installer-name": "ckeditor/plugins/liststyle"
-                },
-                "dist": {
-                    "url": "https://download.ckeditor.com/liststyle/releases/liststyle_4.8.0.zip",
-                    "type": "zip"
-                }
-            }
-        },
         "ckeditor/templates": {
             "type": "package",
             "package": {
