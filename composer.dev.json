@@ -6,7 +6,7 @@
         "composer/installers": "^1.2.0",
         "cweagans/composer-patches": "^1.6.0",
         "drupal-composer/drupal-scaffold": "^2.3",
-        "drupal/core": "8.8.10",
+        "drupal/core": "8.8.x",
         "drush/drush": "8.3.2",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0"
