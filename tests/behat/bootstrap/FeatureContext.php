@@ -8,6 +8,7 @@
 use Drupal\DrupalExtension\Context\DrupalContext;
 use IntegratedExperts\BehatSteps\D8\WatchdogTrait;
 use IntegratedExperts\BehatSteps\FieldTrait;
+use IntegratedExperts\BehatSteps\JsTrait;
 use IntegratedExperts\BehatSteps\LinkTrait;
 use IntegratedExperts\BehatSteps\PathTrait;
 use IntegratedExperts\BehatSteps\ResponseTrait;
@@ -31,5 +32,6 @@ class FeatureContext extends DrupalContext {
   use ResponseTrait;
   use TideCommonTrait;
   use WatchdogTrait;
+  use JsTrait;
 
 }
