@@ -30,6 +30,8 @@ class FeatureContext extends DrupalContext {
   use TaxonomyTrait;
   use ResponseTrait;
   use TideCommonTrait;
+  use TideExtensionsTrait;
+  use TideEntityTrait;
   use WatchdogTrait;
 
 }
