@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Trait TideTrait.
+ * Common test trait for Tide.
  *
- * @todo: Review this trait and try using BehatSteps trait instead.
+ * @todo Review this trait and try using BehatSteps trait instead.
  */
 trait TideCommonTrait {
 
@@ -32,7 +32,7 @@ trait TideCommonTrait {
     // actually creating a user with role. By default,
     // assertAuthenticatedByRole() will create a user with 'authenticated role'
     // even if 'anonymous user' role is provided.
-    if ($role == 'anonymous user') {
+    if ($role === 'anonymous user') {
       if (!empty($this->loggedInUser)) {
         $this->logout();
       }
@@ -58,22 +58,17 @@ trait TideCommonTrait {
    */
   public function iWaitForAjaxToFinish($timeout) {
     $condition = <<<JS
-    (function() {
-      function isAjaxing(instance) {
-        return instance && instance.ajaxing === true;
-      }
-      var d7_not_ajaxing = true;
-      if (typeof Drupal !== 'undefined' && typeof Drupal.ajax !== 'undefined' && typeof Drupal.ajax.instances === 'undefined') {
-        for(var i in Drupal.ajax) { if (isAjaxing(Drupal.ajax[i])) { d7_not_ajaxing = false; } }
-      }
-      var d8_not_ajaxing = (typeof Drupal === 'undefined' || typeof Drupal.ajax === 'undefined' || typeof Drupal.ajax.instances === 'undefined' || !Drupal.ajax.instances.some(isAjaxing))
-      return (
-        // Assert no AJAX request is running (via jQuery or Drupal) and no
-        // animation is running.
-        (typeof jQuery === 'undefined' || (jQuery.active === 0 && jQuery(':animated').length === 0)) &&
-        d7_not_ajaxing && d8_not_ajaxing
-      );
-    }());
+      (function() {
+        function isAjaxing(instance) {
+          return instance && instance.ajaxing === true;
+        }
+        return (
+          // Assert no AJAX request is running (via jQuery or Drupal) and no
+          // animation is running.
+          (typeof jQuery === 'undefined' || (jQuery.active === 0 && jQuery(':animated').length === 0)) &&
+          (typeof Drupal === 'undefined' || typeof Drupal.ajax === 'undefined' || !Drupal.ajax.instances.some(isAjaxing))
+        );
+      }());
 JS;
     $result = $this->getSession()->wait($timeout * 1000, $condition);
     if (!$result) {
