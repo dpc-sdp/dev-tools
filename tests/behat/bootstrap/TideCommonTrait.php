@@ -152,7 +152,10 @@ JS;
     $page = $this->getSession()->getPage();
     $link = $page->find('xpath', '//div[contains(@class, "details-wrapper")]/details/summary[text()="' . $text . '"]');
     if ($link === NULL) {
-      throw new \Exception('The detail with text "' . $text . '" not found.');
+      $link = $page->find('xpath', '//div[contains(@class, "details-wrapper")]/details/summary/span[text()="' . $text . '"]');
+      if ($link === NULL) {
+        throw new \Exception('The detail with text "' . $text . '" not found.');
+      }
     }
     $link->click();
   }
