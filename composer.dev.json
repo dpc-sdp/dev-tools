@@ -25,7 +25,8 @@
         "phpcompatibility/php-compatibility": "^9.1",
         "ubirak/rest-api-behat-extension": "dev-feature/drupalextension-compatibility as 7.0.0",
         "symfony/filesystem": "^3.2.8",
-        "php-http/curl-client": "^1.7"
+        "php-http/curl-client": "^1.7",
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "classmap": [
