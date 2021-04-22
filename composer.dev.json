@@ -27,7 +27,8 @@
         "symfony/filesystem": "^3.2.8",
         "php-http/curl-client": "^1.7",
         "phpunit/phpunit": "^6.5",
-        "drupal/core-dev":"8.9.x"
+        "drupal/core-dev":"8.9.x",
+        "weitzman/drupal-test-traits": "1.4.0"
     },
     "autoload": {
         "classmap": [
