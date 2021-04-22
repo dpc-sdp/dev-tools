@@ -4,7 +4,7 @@
     "license": "GPL-2.0-or-later",
     "type": "drupal-module",
     "require": {
-        "dpc-sdp/tide_core": "^2.0.0"
+        "dpc-sdp/tide_core": "dev-feature/remove-refactor_xss_attributes-3109650"
     },
     "suggest": {
         "dpc-sdp/tide_media:^1.7.0": "Media and related configuration for Tide Drupal 8 distribution"
