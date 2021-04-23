@@ -25,34 +25,34 @@
      SIMPLETEST_BASE_URL is an internal DDEV URL, you can set this to the
      external DDev URL so you can follow the links directly.
     -->
-    <env name="BROWSERTEST_OUTPUT_BASE_URL" value=""/>
+<!--    <env name="BROWSERTEST_OUTPUT_BASE_URL" value=""/>-->
     <!-- To disable deprecation testing completely uncomment the next line. -->
     <!-- <env name="SYMFONY_DEPRECATIONS_HELPER" value="disabled"/> -->
     <!-- Example for changing the driver class for mink tests MINK_DRIVER_CLASS value: 'Drupal\FunctionalJavascriptTests\DrupalSelenium2Driver' -->
-    <env name="MINK_DRIVER_CLASS" value=''/>
+<!--    <env name="MINK_DRIVER_CLASS" value=''/>-->
     <!-- Example for changing the driver args to mink tests MINK_DRIVER_ARGS value: '["http://127.0.0.1:8510"]' -->
-    <env name="MINK_DRIVER_ARGS" value=''/>
+<!--    <env name="MINK_DRIVER_ARGS" value=''/>-->
     <!-- Example for changing the driver args to phantomjs tests MINK_DRIVER_ARGS_PHANTOMJS value: '["http://127.0.0.1:8510"]' -->
-    <env name="MINK_DRIVER_ARGS_PHANTOMJS" value=''/>
+<!--    <env name="MINK_DRIVER_ARGS_PHANTOMJS" value=''/>-->
     <!-- Example for changing the driver args to webdriver tests MINK_DRIVER_ARGS_WEBDRIVER value: '["chrome", { "chromeOptions": { "w3c": false } }, "http://localhost:4444/wd/hub"]' For using the Firefox browser, replace "chrome" with "firefox" -->
-    <env name="MINK_DRIVER_ARGS_WEBDRIVER" value=''/>
+<!--    <env name="MINK_DRIVER_ARGS_WEBDRIVER" value=''/>-->
   </php>
   <testsuites>
     <testsuite name="unit">
-      <file>./tests/TestSuites/UnitTestSuite.php</file>
+      <directory>./dpc-sdp/*/tests/src/Unit</directory>
     </testsuite>
-    <testsuite name="kernel">
-      <file>./tests/TestSuites/KernelTestSuite.php</file>
-    </testsuite>
-    <testsuite name="functional">
-      <file>./tests/TestSuites/FunctionalTestSuite.php</file>
-    </testsuite>
-    <testsuite name="functional-javascript">
-      <file>./tests/TestSuites/FunctionalJavascriptTestSuite.php</file>
-    </testsuite>
-    <testsuite name="build">
-      <file>./tests/TestSuites/BuildTestSuite.php</file>
-    </testsuite>
+<!--    <testsuite name="kernel">-->
+<!--      <file>./tests/TestSuites/KernelTestSuite.php</file>-->
+<!--    </testsuite>-->
+<!--    <testsuite name="functional">-->
+<!--      <file>./tests/TestSuites/FunctionalTestSuite.php</file>-->
+<!--    </testsuite>-->
+<!--    <testsuite name="functional-javascript">-->
+<!--      <file>./tests/TestSuites/FunctionalJavascriptTestSuite.php</file>-->
+<!--    </testsuite>-->
+<!--    <testsuite name="build">-->
+<!--      <file>./tests/TestSuites/BuildTestSuite.php</file>-->
+<!--    </testsuite>-->
   </testsuites>
   <listeners>
     <listener class="\Drupal\Tests\Listeners\DrupalListener">
