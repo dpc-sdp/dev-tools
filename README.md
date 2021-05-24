@@ -118,6 +118,7 @@ Finally, we install the module itself.
 1. Uncomment this line in `docker-compose.yml`:
   ```
   #XDEBUG_ENABLE: "true"
+  #DOCKERHOST: "host.docker.internal"
   ```
 2. Restart the stack: `ahoy up`.
 3. Enable listening for incoming debug connections in your IDE.
@@ -181,3 +182,14 @@ To make a change:
 6. If the build passes, merge the Dev Tools branch to `master` and make a release.
     - NOTE: This must be a release in GitHub, see https://github.com/dpc-sdp/dev-tools/releases/new
 7. Remove the temporary branch in `tide_*` module from Step 3. 
+
+## Unit test
+The dev-tools supports unit tests. 
+### Registering tests
+#### Directory
+1. The unit tests should go in `tests\src\Unit` direcotry. 
+2. The unit tests need to respect PSR-4 namespace naming convention, in our case, 
+    `namespace Drupal\Tests\{module}\Unit`
+### 2 ways to run tests
+1. commit to CI.
+2. Run `./vendor/bin/phpunit` inside CLI container locally.
