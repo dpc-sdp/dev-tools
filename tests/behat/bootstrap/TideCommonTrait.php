@@ -80,10 +80,84 @@ JS;
    * @Given no :type content type
    */
   public function removeContentType($type) {
-    $content_type_entity = \Drupal::entityManager()->getStorage('node_type')->load($type);
+    $content_type_entity = \Drupal::entityTypeManager()->getStorage('node_type')->load($type);
     if ($content_type_entity) {
       $content_type_entity->delete();
     }
+  }
+
+  /**
+   * @When I scroll :selector into view
+   * @When I scroll selector :selector into view
+   *
+   * @param string $selector
+   *   Allowed selectors: #id, .className, //xpath.
+   *
+   * @throws \Exception
+   */
+  public function scrollIntoView($selector) {
+    $function = <<<JS
+      (function() {
+        jQuery("$selector").get(0).scrollIntoView(false);
+      }());
+JS;
+    try {
+      $this->getSession()->executeScript($function);
+    }
+    catch (Exception $e) {
+      throw new \Exception(__METHOD__ . ' failed');
+    }
+  }
+
+  /**
+   * @Then /^I click on link with href "([^"]*)"$/
+   * @Then /^I click on link with href value "([^"]*)"$/
+   *
+   * @param string $href
+   *   The href value.
+   */
+  public function clickOnLinkWithHref(string $href) {
+    $page = $this->getSession()->getPage();
+    $link = $page->find('xpath', '//a[@href="' . $href . '"]');
+    if ($link === NULL) {
+      throw new \Exception('Link with href "' . $href . '" not found.');
+    }
+    $link->click();
+  }
+
+  /**
+   * @Then /^I click on the horizontal tab "([^"]*)"$/
+   * @Then /^I click on the horizontal tab with text "([^"]*)"$/
+   *
+   * @param string $text
+   *   The text.
+   */
+  public function clickOnHorzTab(string $text) {
+    $page = $this->getSession()->getPage();
+    $link = $page->find('xpath', '//ul[contains(@class, "horizontal-tabs-list")]/li[contains(@class, "horizontal-tab-button")]/a/strong[text()="' . $text . '"]');
+    if ($link === NULL) {
+      throw new \Exception('The horizontal tab with text "' . $text . '" not found.');
+    }
+    $link->click();
+  }
+
+  /**
+   * @Then /^I click on the detail "([^"]*)"$/
+   * @Then /^I click on the detail with text "([^"]*)"$/
+   *
+   * @param string $text
+   *   The text.
+   */
+  public function clickOnDetail(string $text) {
+    $page = $this->getSession()->getPage();
+    $link = $page->find('xpath', '//div[contains(@class, "details-wrapper")]/details/summary[text()="' . $text . '"]');
+    if ($link === NULL) {
+      $link = $page->find('xpath', '//div[contains(@class, "details-wrapper")]/details/summary/span[text()="' . $text . '"]');
+      if ($link === NULL) {
+        throw new \Exception('The detail with text "' . $text . '" not found.');
+      }
+    }
+    $link->click();
   }
 
 }
