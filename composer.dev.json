@@ -185,14 +185,15 @@
             }
         },
         "ckeditor/fakeobjects": {
+            "_webform": true,
             "type": "package",
             "package": {
                 "name": "ckeditor/fakeobjects",
+                "version": "4.16.1",
                 "type": "drupal-library",
-                "version": "4.5.11",
                 "dist": {
-                    "type": "zip",
-                    "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.5.11.zip"
+                    "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.16.1.zip",
+                    "type": "zip"
                 },
                 "require": {
                     "composer/installers": "~1.0"
