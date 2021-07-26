@@ -6,7 +6,7 @@
 version: '2.3'
 
 x-bay-image-version:
-  &bay-image-version ${BAY_IMAGE_VERSION:-latest}
+  &bay-image-version ${BAY_IMAGE_VERSION:-3.x}
 
 x-project:
   &project ${PROJECT_NAME:-mysite}

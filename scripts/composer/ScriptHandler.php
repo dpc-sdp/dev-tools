@@ -54,12 +54,7 @@ class ScriptHandler {
 
     $configPath = Path::makeRelative($drupalFinder->getComposerRoot() . '/config/default', $drupalRoot);
     $settings_string = <<<SETTINGS
-\$settings['config_directories'] = [
-  CONFIG_SYNC_DIRECTORY => (object) [
-    'value' => '$configPath',
-    'required' => TRUE,
-  ],
-];
+\$settings['config_sync_directory'] = '$configPath';
 SETTINGS;
     self::appendToFile($drupalRoot . '/sites/default/settings.php', $settings_string);
 

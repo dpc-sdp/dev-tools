@@ -14,7 +14,6 @@ default:
       - Drupal\DrupalExtension\Context\MarkupContext
       - Drupal\DrupalExtension\Context\MessageContext
       - IntegratedExperts\BehatScreenshotExtension\Context\ScreenshotContext
-      - IntegratedExperts\BehatRelativityExtension\Context\RelativityContext
       - Ubirak\RestApiBehatExtension\RestApiContext
       - Ubirak\RestApiBehatExtension\Json\JsonContext
 
@@ -66,28 +65,6 @@ default:
       dir: '%paths.base%/screenshots'
       fail: true
       purge: false
-    IntegratedExperts\BehatRelativityExtension:
-      breakpoints:
-        mobile:
-          width: 320
-          height: 480
-        tablet:
-          width: 768
-          height: 1024
-        desktop:
-          width: 1024
-          height: 1024
-          default: true
-      # Vertical offset - document will be scrolled to the element with this offset.
-      # Useful when fixed elements may cover part of pages making it impossible to click on components.
-      offset: 60
-      # List of site-wide components.
-      components:
-        'header-container': ".header-container"
-        'page': ".layout-container"
-        'header': "header"
-        'main': "main"
-        'footer': "footer"
     Ubirak\RestApiBehatExtension\Extension:
       rest:
         base_url: http://nginx:8080
