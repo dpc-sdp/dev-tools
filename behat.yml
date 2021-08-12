@@ -13,7 +13,7 @@ default:
       - Drupal\DrupalExtension\Context\MinkContext
       - Drupal\DrupalExtension\Context\MarkupContext
       - Drupal\DrupalExtension\Context\MessageContext
-      - IntegratedExperts\BehatScreenshotExtension\Context\ScreenshotContext
+      - DrevOps\BehatScreenshotExtension\Context\ScreenshotContext
       - Ubirak\RestApiBehatExtension\RestApiContext
       - Ubirak\RestApiBehatExtension\Json\JsonContext
 
@@ -61,7 +61,7 @@ default:
         splash: '.region-splash'
 
     # Allows to capture HTML and JPG screenshots (based on the driver used).
-    IntegratedExperts\BehatScreenshotExtension:
+    DrevOps\BehatScreenshotExtension:
       dir: '%paths.base%/screenshots'
       fail: true
       purge: false

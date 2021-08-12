@@ -19,12 +19,12 @@
         "drupal/coder": "^8.3.10",
         "drupal/console": "^1.0",
         "drupal/drupal-extension": "^4.1",
-        "integratedexperts/behat-screenshot": "^0.7",
-        "integratedexperts/behat-steps": "^0.1.0",
+        "drevops/behat-screenshot": "^1.0",
+        "drevops/behat-steps": "^1.2.0",
         "phpcompatibility/php-compatibility": "^9.1",
-        "ubirak/rest-api-behat-extension": "dev-feature/drupalextension-compatibility as 7.0.0",
+        "ubirak/rest-api-behat-extension": "^8.0",
         "symfony/filesystem": "^4.4",
-        "php-http/curl-client": "^1.7",
+        "php-http/curl-client": "*",
         "phpunit/phpunit": "^8.5.14 || ^9",
         "drupal/core-dev":"9.2.x"
     },
@@ -418,11 +418,6 @@
                     "composer/installers": "~1.0"
                 }
             }
-        },
-        "ubirak/rest-api-behat-extension": {
-            "type": "vcs",
-            "no-api": true,
-            "url": "https://github.com/integratedexperts/rest-api-behat-extension"
         }
     },
     "scripts": {
