@@ -423,6 +423,11 @@
             "type": "vcs",
             "no-api": true,
             "url": "https://github.com/dpc-sdp/rest-api-behat-extension.git"
+        },
+        "drupal/token_conditions": {
+            "type": "vcs",
+            "no-api": true,
+            "url": "https://github.com/dpc-sdp/token_conditions"
         }
     },
     "scripts": {
