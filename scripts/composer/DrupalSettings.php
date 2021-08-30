@@ -54,10 +54,12 @@ class DrupalSettings {
     if ($fs->exists($options['settings_path']) && $fs->exists($standard_settings_file)) {
       if (strpos(file_get_contents($standard_settings_file), $generated_settings_file_name) === FALSE) {
         $string = <<<GENERATEDSETTINGS
+
 // Include generated settings file.
 if (file_exists(\$app_root . '/' . \$site_path . '/$generated_settings_file_name')) {
   include \$app_root . '/' . \$site_path . '/$generated_settings_file_name';
 }
+
 GENERATEDSETTINGS;
         self::appendToFile($standard_settings_file, $string);
         $event->getIO()->write(sprintf('Added inclusion of generated settings file %s to %s', $generated_settings_file_name, $standard_settings_file));
@@ -120,6 +122,10 @@ GENERATEDSETTINGS;
         ],
     ],
 ];
+
+// Allow installing extensions under tests directory.
+\$settings['extension_discovery_scan_tests'] = TRUE;
+
 FILE;
   }
 
