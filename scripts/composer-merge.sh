@@ -10,6 +10,6 @@ COMPOSER_BUILD=${COMPOSER_BUILD:-composer.build.json}
 COMPOSER_DEV=${COMPOSER_DEV:-composer.dev.json}
 
 echo "==> Create a build composer file"
-# @note: jq needs to exist on host as the merging of Composer config is running
+# @note: gojq needs to exist on host as the merging of Composer config is running
 # before containers are started.
-cat <<< "$(jq --indent 4 -M -s '.[0] * .[1]' composer.json $COMPOSER_DEV )" > ${COMPOSER_BUILD}
+cat <<< "$(gojq --indent 4 -M -s '.[0] * .[1]' composer.json $COMPOSER_DEV )" > ${COMPOSER_BUILD}

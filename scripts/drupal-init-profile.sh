@@ -27,7 +27,7 @@ composer require --prefer-source ${PACKAGE_ORG}/${PACKAGE_NAME}:@dev
 
 # If running with suggested modules, install suggested modules first.
 if [ "$INSTALL_SUGGEST" == "1" ] ; then
-  composer_suggests=$(cat ${COMPOSER} | jq -r 'select(.suggest != null) | .suggest | keys_unsorted[]')
+  composer_suggests=$(cat ${COMPOSER} | gojq -r 'select(.suggest != null) | .suggest | keys_unsorted[]')
   for composer_suggest in $composer_suggests
   do
     echo "==> Requiring suggested module $composer_suggest"
