@@ -5,7 +5,7 @@
     "require": {
         "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.6.0",
-        "drupal-composer/drupal-scaffold": "^2.3",
+        "drupal/core-composer-scaffold": "^8.9",
         "drupal/core": "9.2.x",
         "drush/drush": "^10",
         "vlucas/phpdotenv": "^2.4",
@@ -15,7 +15,7 @@
         "behat/behat": "^3.5",
         "behat/mink-selenium2-driver": "^1.4",
         "squizlabs/php_codesniffer": "3.5.6",
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
         "drupal/coder": "^8.3.10",
         "drupal/console": "^1.0",
         "drupal/drupal-extension": "^4.1",
@@ -427,7 +427,7 @@
         "drupal/token_conditions": {
             "type": "vcs",
             "no-api": true,
-            "url": "https://github.com/dpc-sdp/token_conditions"
+            "url": "https://github.com/dpc-sdp/token_conditions.git"
         }
     },
     "scripts": {
@@ -438,34 +438,27 @@
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "post-install-cmd": [
-            "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+            "composer drupal:scaffold",
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
             "Utilities\\composer\\DrupalSettings::create"
         ],
         "post-update-cmd": [
-            "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+            "composer drupal:scaffold",
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
             "Utilities\\composer\\DrupalSettings::create"
         ]
     },
     "extra": {
         "drupal-scaffold": {
-            "source": "http://cgit.drupalcode.org/drupal/plain/{path}?h={version}",
-            "includes": [
-                ".editorconfig",
-                ".eslintignore",
-                ".gitattributes",
-                "index.php",
-                "robots.txt",
-                "sites/default/default.services.yml",
-                "sites/default/default.settings.php",
-                "update.php"
+            "allowed-packages": [
+              "drupal/core"
             ],
-            "initial": {
-                "sites/default/default.services.yml": "sites/default/services.yml",
-                "sites/default/default.settings.php": "sites/default/settings.php"
+            "file-mapping": {
+              "[web-root]/robots.txt": false
             },
-            "omit-defaults": true
+            "locations": {
+              "web-root": "./docroot"
+            }
         },
         "enable-patching": true,
         "composer-exit-on-patch-failure": true,
