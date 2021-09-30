@@ -427,7 +427,8 @@
         "drupal/token_conditions": {
             "type": "vcs",
             "no-api": true,
-            "url": "https://github.com/dpc-sdp/token_conditions.git"
+            "url": "https://github.com/dpc-sdp/token_conditions.git",
+            "only": ["compatible-with-drupal-9"]
         }
     },
     "scripts": {
