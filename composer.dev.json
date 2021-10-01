@@ -428,7 +428,7 @@
             "type": "vcs",
             "no-api": true,
             "url": "https://github.com/dpc-sdp/token_conditions.git",
-            "canonical": false
+            "exclude": ["dev-1.x", "1.x-dev"]
         }
     },
     "scripts": {
