@@ -45,7 +45,8 @@
     "repositories": {
         "drupal": {
             "type": "composer",
-            "url": "https://packages.drupal.org/8"
+            "url": "https://packages.drupal.org/8",
+            "exclude": ["drupal/token_conditions"]
         },
         "dpc-sdp/tide": {
             "type": "vcs",
@@ -427,8 +428,7 @@
         "drupal/token_conditions": {
             "type": "vcs",
             "no-api": true,
-            "url": "https://github.com/dpc-sdp/token_conditions.git",
-            "exclude": ["dev-1.x", "1.x-dev"]
+            "url": "https://github.com/dpc-sdp/token_conditions.git"
         }
     },
     "scripts": {
