@@ -9,7 +9,7 @@ use Symfony\Component\Filesystem\Filesystem;
 use Webmozart\PathUtil\Path;
 
 /**
- * Class ScriptHandler.
+ * Class Script Handler.
  *
  * @package DrupalProject\composer
  */

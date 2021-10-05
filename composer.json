@@ -7,6 +7,6 @@
         "dpc-sdp/tide_core": "dev-feature/SDPA-5396-drupalcore-9 as 2.0.14"
     },
     "suggest": {
-        "dpc-sdp/tide_media:dpc-sdp/tide_media:dev-compatible-with-drupal-9": "Media and related configuration for Tide Drupal 8 distribution"
+        "dpc-sdp/tide_media:dpc-sdp/tide_media:dev-compatible-with-drupal-9 as 1.7.10": "Media and related configuration for Tide Drupal 8 distribution"
     }
 }
