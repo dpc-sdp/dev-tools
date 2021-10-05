@@ -66,12 +66,12 @@
     <!--      <file>./tests/TestSuites/BuildTestSuite.php</file>-->
     <!--    </testsuite>-->
   </testsuites>
-  <listeners>
-    <listener class="\Drupal\Tests\Listeners\DrupalListener">
-    </listener>
-    <!-- The Symfony deprecation listener has to come after the Drupal listener -->
-    <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener">
-    </listener>
-  </listeners>
+<!--  <listeners>-->
+<!--    <listener class="\Drupal\Tests\Listeners\DrupalListener">-->
+<!--    </listener>-->
+<!--    &lt;!&ndash; The Symfony deprecation listener has to come after the Drupal listener &ndash;&gt;-->
+<!--    <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener">-->
+<!--    </listener>-->
+<!--  </listeners>-->
   <!-- Filter for coverage reports. -->
 </phpunit>
