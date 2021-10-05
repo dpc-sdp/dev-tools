@@ -40,7 +40,7 @@ x-environment:
   LAGOON_LOCALDEV_URL: ${LOCALDEV_URL:-http://mysite.docker.amazee.io}
   GITHUB_TOKEN: ${GITHUB_TOKEN:-}
   BAY_KEY: ${BAY_KEY:-}
-  BAY_IMAGE_VERSION: ${BAY_IMAGE_VERSION:-latest}
+  BAY_IMAGE_VERSION: ${BAY_IMAGE_VERSION:-4.x}
   LAGOON_ENVIRONMENT_TYPE: ${LAGOON_ENVIRONMENT_TYPE:-local}
   DRUPAL_REFRESH_SEARCHAPI: ${DRUPAL_REFRESH_SEARCHAPI:-}
   # Uncomment to enable Xdebug and then restart via `ahoy up`.
