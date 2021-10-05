@@ -26,7 +26,8 @@
         "symfony/filesystem": "^4.4",
         "php-http/curl-client": "*",
         "phpunit/phpunit": "^8.5.14 || ^9",
-        "drupal/core-dev":"9.2.x"
+        "drupal/core-dev":"9.2.x",
+        "phpspec/prophecy-phpunit":"^2"
     },
     "autoload": {
         "classmap": [
