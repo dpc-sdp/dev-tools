@@ -9,7 +9,7 @@ use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
- * Class DrupalSettings.
+ * Class Drupal Settings.
  */
 class DrupalSettings {
 
