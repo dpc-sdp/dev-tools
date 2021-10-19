@@ -77,16 +77,6 @@ JS;
   }
 
   /**
-   * @Given no :type content type
-   */
-  public function removeContentType($type) {
-    $content_type_entity = \Drupal::entityTypeManager()->getStorage('node_type')->load($type);
-    if ($content_type_entity) {
-      $content_type_entity->delete();
-    }
-  }
-
-  /**
    * @When I scroll :selector into view
    * @When I scroll selector :selector into view
    *

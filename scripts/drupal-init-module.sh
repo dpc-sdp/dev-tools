@@ -15,6 +15,7 @@ APP=${APP:-/app}
 WEBROOT=${WEBROOT:-docroot}
 TEST_PACKAGE_NAME=${TEST_PACKAGE_NAME:-tide_test}
 TEST_PACKAGE_VERSION=${TEST_PACKAGE_VERSION:-^1.0}
+URI=${LOCALDEV_URL:-dev}
 
 echo "==> COMPOSER_MEMORY_LIMIT=$COMPOSER_MEMORY_LIMIT"
 
@@ -39,21 +40,21 @@ composer require --prefer-source ${PACKAGE_ORG}/${PACKAGE_NAME}:@dev
 
 # If running with suggested modules, install them first.
 if [ "$INSTALL_SUGGEST" == "1" ] ; then
-  composer_suggests=$(cat ${COMPOSER} | jq -r 'select(.suggest != null) | .suggest | keys_unsorted[]')
+  composer_suggests=$(cat ${COMPOSER} | gojq -r 'select(.suggest != null) | .suggest | keys[]')
   for composer_suggest in $composer_suggests
   do
     echo "==> Requiring suggested module $composer_suggest"
     composer require $composer_suggest
   done
 
-  drupal_suggests=$(cat ${COMPOSER} | jq -r 'select(.suggest != null) | .suggest | keys_unsorted[]' | sed "s/$PACKAGE_ORG\///" | cut -f1 -d":")
+  drupal_suggests=$(cat ${COMPOSER} | gojq -r 'select(.suggest != null) | .suggest | keys[]' | sed "s/$PACKAGE_ORG\///" | cut -f1 -d":")
   for drupal_suggest in $drupal_suggests
   do
     echo "==> Enabling suggested module $drupal_suggest"
-    drush -r ${APP}/${WEBROOT} en -y $drupal_suggest
+    drush -r ${APP}/${WEBROOT} --uri=${URI} en -y $drupal_suggest
   done
 fi
 
-drush -r ${APP}/${WEBROOT} en -y ${PACKAGE_NAME}
+drush -r ${APP}/${WEBROOT} --uri=${URI} en -y ${PACKAGE_NAME}
 
 echo "==> Finished $PACKAGE_NAME module installation"

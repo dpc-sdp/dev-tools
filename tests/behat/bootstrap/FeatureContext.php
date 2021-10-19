@@ -6,16 +6,16 @@
  */
 
 use Drupal\DrupalExtension\Context\DrupalContext;
-use IntegratedExperts\BehatSteps\D8\WatchdogTrait;
-use IntegratedExperts\BehatSteps\FieldTrait;
-use IntegratedExperts\BehatSteps\JsTrait;
-use IntegratedExperts\BehatSteps\LinkTrait;
-use IntegratedExperts\BehatSteps\PathTrait;
-use IntegratedExperts\BehatSteps\ResponseTrait;
-use IntegratedExperts\BehatSteps\D8\ContentTrait;
-use IntegratedExperts\BehatSteps\D8\MediaTrait;
-use IntegratedExperts\BehatSteps\D8\MenuTrait;
-use IntegratedExperts\BehatSteps\D8\TaxonomyTrait;
+use DrevOps\BehatSteps\WatchdogTrait;
+use DrevOps\BehatSteps\FieldTrait;
+use DrevOps\BehatSteps\JsTrait;
+use DrevOps\BehatSteps\LinkTrait;
+use DrevOps\BehatSteps\PathTrait;
+use DrevOps\BehatSteps\ResponseTrait;
+use DrevOps\BehatSteps\ContentTrait;
+use DrevOps\BehatSteps\MediaTrait;
+use DrevOps\BehatSteps\MenuTrait;
+use DrevOps\BehatSteps\TaxonomyTrait;
 
 /**
  * Defines application features from the specific context.

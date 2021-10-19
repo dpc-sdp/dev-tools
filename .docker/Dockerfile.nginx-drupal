@@ -1,6 +1,6 @@
 # @see https://github.com/dpc-sdp/bay/blob/master/bay/images/Dockerfile.nginx
 ARG CLI_IMAGE
-ARG BAY_IMAGE_VERSION=latest
+ARG BAY_IMAGE_VERSION=4.x
 
 FROM ${CLI_IMAGE:-cli} as cli
 
