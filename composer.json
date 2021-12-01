@@ -4,7 +4,7 @@
     "license": "GPL-2.0-or-later",
     "type": "drupal-module",
     "require": {
-        "dpc-sdp/tide_core": "3.0.0"
+        "dpc-sdp/tide_core": "dev-feature/SDPA-5537-CMS-hyperlink-improvements as 3.0.1"
     },
     "suggest": {
         "dpc-sdp/tide_media:dev-compatible-with-drupal-9": "Media and related configuration for Tide Drupal 8 distribution"
