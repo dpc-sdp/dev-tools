@@ -27,7 +27,8 @@
         "php-http/curl-client": "*",
         "phpunit/phpunit": "^8.5.14 || ^9",
         "drupal/core-dev":"9.2.x",
-        "phpspec/prophecy-phpunit":"^2"
+        "phpspec/prophecy-phpunit":"^2",
+        "weitzman/drupal-test-traits": "^1.5"
     },
     "autoload": {
         "classmap": [
