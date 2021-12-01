@@ -16,6 +16,7 @@ use DrevOps\BehatSteps\ContentTrait;
 use DrevOps\BehatSteps\MediaTrait;
 use DrevOps\BehatSteps\MenuTrait;
 use DrevOps\BehatSteps\TaxonomyTrait;
+use DrevOps\BehatSteps\VisibilityTrait;
 
 /**
  * Defines application features from the specific context.
@@ -35,5 +36,6 @@ class FeatureContext extends DrupalContext {
   use TideEntityTrait;
   use WatchdogTrait;
   use JsTrait;
+  use VisibilityTrait;
 
 }
