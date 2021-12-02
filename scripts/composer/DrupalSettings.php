@@ -141,7 +141,7 @@ FILE;
   protected static function extractEnvironmentVariables(array $allowed) {
     $options = [];
 
-    $dotenv = Dotenv::createMutable(__DIR__ . '/../..');
+    $dotenv = Dotenv::createImmutable(__DIR__ . '/../..');
     $dotenv->load();
 
     foreach ($allowed as $name) {
