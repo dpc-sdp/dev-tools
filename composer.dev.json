@@ -8,7 +8,7 @@
         "drupal/core-composer-scaffold": "^8.9",
         "drupal/core": "9.2.x",
         "drush/drush": "^10",
-        "vlucas/phpdotenv": "^2.4",
+        "vlucas/phpdotenv": "^4.1",
         "webflo/drupal-finder": "^1.0"
     },
     "require-dev": {
