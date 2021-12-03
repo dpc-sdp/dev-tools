@@ -8,7 +8,7 @@
         "drupal/core-composer-scaffold": "^8.9",
         "drupal/core": "9.2.x",
         "drush/drush": "^10",
-        "vlucas/phpdotenv": "^2.4",
+        "vlucas/phpdotenv": "^4.1",
         "webflo/drupal-finder": "^1.0"
     },
     "require-dev": {
@@ -27,7 +27,8 @@
         "php-http/curl-client": "*",
         "phpunit/phpunit": "^8.5.14 || ^9",
         "drupal/core-dev":"9.2.x",
-        "phpspec/prophecy-phpunit":"^2"
+        "phpspec/prophecy-phpunit":"^2",
+        "weitzman/drupal-test-traits": "^1.5"
     },
     "autoload": {
         "classmap": [
