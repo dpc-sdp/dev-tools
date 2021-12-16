@@ -113,14 +113,14 @@ commands:
   fix-bay-token:
     usage: Fix the bay token by re-importing.
     cmd: |
-      pygmy stop \
+      pygmy-go down \
       && sleep 1 \
-      && pygmy start \
+      && pygmy-go up \
       && docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm \
       && docker-compose up -d --force \
-      && pygmy stop \
+      && pygmy-go down \
       && sleep 1 \
-      && pygmy start
+      && pygmy-go up
 
   link-package:
     usage: Link package from current repository root.
