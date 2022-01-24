@@ -12,4 +12,4 @@ mkdir -p /tmp/artifacts/behat
 ahoy test-behat || ahoy test-behat -- --rerun
 
 echo "==> Run Unit tests"
-ahoy cli "/app/vendor/bin/phpunit"
+ahoy cli "/app/vendor/bin/phpunit ./dpc-sdp"
