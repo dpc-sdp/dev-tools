@@ -55,7 +55,7 @@ jobs:
             .circleci/phpunit_tests.sh
             .circleci/phpunit_coverage.sh
       - run:
-          name: Run on fail tests
+          name: Copy test results
           command: |
             .circleci/phpunit_results.sh
           when: always
