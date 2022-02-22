@@ -156,7 +156,8 @@ JS;
   public function findMenuItemMatchingText(string $text): void {
     $xpath = '//*/ul/li/a[text() = "' . $text . '"]';
 
-    $session = $this->getSession(); // get the mink session
+    // Get the mink session.
+    $session = $this->getSession();
     $element = $session->getPage()->find(
       'xpath',
       $session->getSelectorsHandler()->selectorToXpath('xpath', $xpath)
