@@ -150,4 +150,21 @@ JS;
     $link->click();
   }
 
+  /**
+   * @Then /^I should find menu item text matching "([^"]*)"$/
+   */
+  public function findMenuItemMatchingText(string $text): void {
+    $xpath = '//*/ul/li/a[text() = "' . $text . '"]';
+
+    $session = $this->getSession(); // get the mink session
+    $element = $session->getPage()->find(
+      'xpath',
+      $session->getSelectorsHandler()->selectorToXpath('xpath', $xpath)
+    );
+
+    if ($element === NULL) {
+      throw new \InvalidArgumentException(sprintf('Could not evaluate XPath: "%s"', $xpath));
+    }
+  }
+
 }
