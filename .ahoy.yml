@@ -27,7 +27,7 @@ commands:
       ahoy line "DB port on host       : " $(docker port $(docker-compose ps -q mariadb) 3306 | cut -d : -f 2)
       ahoy line "Mailhog URL           : " http://mailhog.docker.amazee.io/
       if [ "$1" ]; then
-        ahoy line "One-time login        : " $(ahoy login -- --no-browser)
+        ahoy line "One-time login        : " $(ahoy login)
       fi
 
   up:
@@ -81,7 +81,7 @@ commands:
 
   login:
     usage: Login to a website.
-    cmd: ahoy drush uublk 1 -q && ahoy drush uli "$@" | xargs open
+    cmd: ahoy drush user:unblock -q "$(ahoy drush user:information --uid=1 --fields=name --format=string)" 2>/dev/null && ahoy drush user:login --no-browser
 
   doctor:
     usage: Find problems with current project setup.
