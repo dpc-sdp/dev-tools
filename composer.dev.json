@@ -42,7 +42,15 @@
             "php": "7.3"
         },
         "process-timeout": 0,
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+          "composer/installers": true,
+          "oomphinc/composer-installers-extender": true,
+          "drupal/*": true,
+          "cweagans/composer-patches": true,
+          "zaporylie/composer-drupal-optimizations": false,
+          "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     },
     "repositories": {
         "drupal": {
