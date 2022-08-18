@@ -39,9 +39,35 @@ jobs:
           INSTALL_SUGGEST: 1
           BEHAT_PROFILE: "--profile=suggest"
 
+  phpunit_tests:
+    <<: *job-build
+    steps:
+      - attach_workspace:
+          at: /workspace
+      - checkout
+      - run: if [ -f "./dev-tools.sh" ] && [ ! "$DEV_TOOLS" ]; then ./dev-tools.sh; fi
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run: .circleci/build.sh
+      - run:
+          name: Run phpunit tests and generate coverage
+          command: |
+            .circleci/phpunit_tests.sh
+            .circleci/phpunit_coverage.sh
+      - run:
+          name: Copy test results
+          command: |
+            .circleci/phpunit_results.sh
+          when: always
+      - store_artifacts:
+          path: /tmp/phpunit
+      - store_test_results:
+          path: /tmp/phpunit
+
 workflows:
   version: 2
   main:
     jobs:
       - build
       - build_suggest
+      - phpunit_tests
