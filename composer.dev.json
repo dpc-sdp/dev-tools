@@ -30,11 +30,6 @@
         "phpspec/prophecy-phpunit":"^2",
         "weitzman/drupal-test-traits": "^1.5"
     },
-    "autoload": {
-        "classmap": [
-            "scripts/composer/"
-        ]
-    },
     "prefer-stable": true,
     "minimum-stability": "dev",
     "config": {
@@ -440,24 +435,6 @@
             "no-api": true,
             "url": "https://github.com/dpc-sdp/token_conditions.git"
         }
-    },
-    "scripts": {
-        "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "pre-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "post-install-cmd": [
-            "composer drupal:scaffold",
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-            "Utilities\\composer\\DrupalSettings::create"
-        ],
-        "post-update-cmd": [
-            "composer drupal:scaffold",
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-            "Utilities\\composer\\DrupalSettings::create"
-        ]
     },
     "extra": {
         "drupal-scaffold": {
