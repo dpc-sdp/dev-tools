@@ -30,6 +30,9 @@
         "phpspec/prophecy-phpunit":"^2",
         "weitzman/drupal-test-traits": "^1.5"
     },
+    "provide": {
+        "drupal/ckeditor": "*"
+    },
     "autoload": {
         "classmap": [
             "scripts/composer/"
