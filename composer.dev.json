@@ -22,11 +22,11 @@
         "drevops/behat-screenshot": "^1.0",
         "drevops/behat-steps": "^1.2.0",
         "phpcompatibility/php-compatibility": "^9.1",
-        "ubirak/rest-api-behat-extension": "dev-rename_ambiguous_match as 8.1.0",
+        "ubirak/rest-api-behat-extension": "dev-rename_ambiguous_match as 8.2.0",
         "symfony/filesystem": "^4.4",
         "php-http/curl-client": "*",
         "phpunit/phpunit": "^8.5.14 || ^9",
-        "drupal/core-dev":"9.2.x",
+        "drupal/core-dev":"9.4.x",
         "phpspec/prophecy-phpunit":"^2",
         "weitzman/drupal-test-traits": "^1.5"
     },
