@@ -4,13 +4,13 @@ Tools used for development of Tide distribution and modules.
 ## Prerequisites
 1. Make sure that you have latest versions of all required software installed:   
   - [Docker](https://www.docker.com/) 
-  - [Pygmy](https://docs.amazee.io/local_docker_development/pygmy.html)
+  - [Pygmy](https://github.com/fubarhouse/pygmy-go)
   - [Ahoy](https://github.com/ahoy-cli/ahoy) 
 2. Make sure that all local web development services are shut down (`apache/nginx`, `mysql`, `MAMP` etc).
 
 ## Local environment setup
 3. `curl https://raw.githubusercontent.com/dpc-sdp/dev-tools/master/install | bash`
-4. `pygmy up`
+4. `pygmy-go up`
 5. `ahoy build` 
 
 ## Available `ahoy` commands
