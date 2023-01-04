@@ -41,9 +41,6 @@
     "prefer-stable": true,
     "minimum-stability": "dev",
     "config": {
-        "platform": {
-            "php": "7.3"
-        },
         "process-timeout": 0,
         "sort-packages": true,
         "allow-plugins": {
