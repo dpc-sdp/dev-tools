@@ -1,6 +1,6 @@
 # @see https://github.com/dpc-sdp/bay/blob/master/bay/images/Dockerfile.php
 ARG CLI_IMAGE
-ARG BAY_IMAGE_VERSION=4.x
+ARG BAY_IMAGE_VERSION=5.x
 
 FROM ${CLI_IMAGE:-cli} as cli
 

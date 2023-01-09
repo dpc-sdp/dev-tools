@@ -170,7 +170,7 @@ FILE;
 
     foreach ($arguments as $argument) {
       if (strpos($argument, '--') === 0) {
-        list($name, $value) = explode('=', $argument);
+        [$name, $value] = explode('=', $argument);
         $name = substr($name, strlen('--'));
         $options[$name] = $value;
         if (array_key_exists($name, $allowed) && !is_null($value)) {
