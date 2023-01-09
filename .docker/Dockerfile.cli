@@ -1,4 +1,4 @@
-ARG BAY_IMAGE_VERSION=4.x
+ARG BAY_IMAGE_VERSION=5.x
 
 # @see https://github.com/dpc-sdp/bay/blob/master/bay/images/Dockerfile.php
 FROM singledigital/bay-cli:${BAY_IMAGE_VERSION}

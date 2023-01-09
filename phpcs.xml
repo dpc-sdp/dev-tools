@@ -12,7 +12,7 @@
     <arg name="parallel" value="75"/>
     <!--Lint code against platform version specified in composer.json
     key "config.platform.php".-->
-    <config name="testVersion" value="7.4"/>
+    <config name="testVersion" value="8.1"/>
 
     <exclude-pattern>*/docroot/*</exclude-pattern>
     <exclude-pattern>*/console/*</exclude-pattern>
