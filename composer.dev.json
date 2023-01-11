@@ -5,7 +5,7 @@
     "require": {
         "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.6.0",
-        "drupal/core-composer-scaffold": "^8.9",
+        "drupal/core-composer-scaffold": "^10.0",
         "drupal/core": "9.4.x",
         "drush/drush": "^10",
         "vlucas/phpdotenv": "^4.1",
