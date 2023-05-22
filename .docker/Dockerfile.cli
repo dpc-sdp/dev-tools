@@ -1,4 +1,4 @@
-ARG BAY_IMAGE_VERSION=5.x
+ARG BAY_IMAGE_VERSION
 
 # @see https://github.com/dpc-sdp/bay/blob/master/bay/images/Dockerfile.php
 FROM ghcr.io/dpc-sdp/bay/php-cli:${BAY_IMAGE_VERSION}
