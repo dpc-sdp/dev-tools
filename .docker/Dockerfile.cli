@@ -21,7 +21,7 @@ ADD dpc-sdp /app/dpc-sdp
 COPY composer.json .env composer.* /app/
 
 RUN echo "memory_limit=-1" >> /usr/local/etc/php/conf.d/memory.ini \
-    && composer install -n --no-dev --ansi --prefer-dist --no-suggest --optimize-autoloader \
+    && COMPOSER=$COMPOSER composer install -n --no-dev --ansi --prefer-dist --no-suggest --optimize-autoloader \
     && rm -rf /usr/local/etc/php/conf.d/memory.ini
 
 COPY . /app

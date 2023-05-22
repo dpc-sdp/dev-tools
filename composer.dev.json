@@ -28,7 +28,10 @@
         "phpunit/phpunit": "^8.5.14 || ^9",
         "drupal/core-dev":"9.4.x",
         "phpspec/prophecy-phpunit":"^2",
-        "weitzman/drupal-test-traits": "^1.5"
+        "weitzman/drupal-test-traits": "^1.5",
+        "php-http/message": "^1.16",
+        "php-http/message-factory": "^1.1",
+        "guzzlehttp/psr7": "^1.9"
     },
     "provide": {
         "drupal/ckeditor": "*"
