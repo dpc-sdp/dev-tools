@@ -21,13 +21,13 @@ commands:
   info:
     usage: Print information about this project.
     cmd: |
-      ahoy line "Site URL              : " ${LOCALDEV_URL}
+      ahoy line "Site URL              : " ${LOCALDEV_URL}:${LOCAL_PORT:-80}/
       ahoy line "Path to project       : " ${APP}
       ahoy line "Path to docroot       : " ${APP}/${WEBROOT}
       ahoy line "DB port on host       : " $(docker port $(docker-compose ps -q mariadb) 3306 | cut -d : -f 2)
-      ahoy line "Mailhog URL           : " http://mailhog.docker.amazee.io/
+      ahoy line "Mailhog URL           : " http://mailhog.docker.internal:${LOCAL_PORT:-80}/
       if [ "$1" ]; then
-        ahoy line "One-time login        : " $(ahoy login)
+        ahoy line "One-time login        : " $(ahoy login -- --no-browser)
       fi
 
   up:
@@ -180,22 +180,22 @@ commands:
     hide: true
 
 entrypoint:
-- bash
-- "-c"
-- |
-  [ -f .env ] && export $(grep -v '^#' .env | xargs) && [ -f .env.local ] && export $(grep -v '^#' .env.local | xargs)
-  export PROJECT_NAME=${PROJECT_NAME:-$(basename $(pwd))}
-  export APP=${APP:-/app}
-  export WEBROOT=${WEBROOT:-docroot}
-  export MYSQL_HOST=${MYSQL_HOST:-mariadb}
-  export MYSQL_PORT=${MYSQL_PORT:-3306}
-  export COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME:-$PROJECT_NAME}
-  export LOCALDEV_URL=${LOCALDEV_URL:-http://${PROJECT_NAME/[_ ]/-}.docker.amazee.io}
-  export COMPOSER=${COMPOSER:-composer.json}
-  export DRUPAL_PROFILE=${DRUPAL_PROFILE:-}
-  export DRUPAL_MODULE_PREFIX=${DRUPAL_MODULE_PREFIX:-mysite}
-  PHPCS_TARGETS=${PHPCS_TARGETS:-.} && export PHPCS_TARGETS=${PHPCS_TARGETS//,/ }
-  if [ "$CI" ]; then export ES_TPL=elasticsearch.ci.yml; fi
-  bash -c "$0" "$@"
-- '{{cmd}}'
-- '{{name}}'
+  - bash
+  - "-c"
+  - |
+    [ -f .env ] && export $(grep -v '^#' .env | xargs) && [ -f .env.local ] && export $(grep -v '^#' .env.local | xargs)
+    export PROJECT_NAME=${PROJECT_NAME:-$(basename $(pwd))}
+    export APP=${APP:-/app}
+    export WEBROOT=${WEBROOT:-docroot}
+    export MYSQL_HOST=${MYSQL_HOST:-mariadb}
+    export MYSQL_PORT=${MYSQL_PORT:-3306}
+    export COMPOSE_PROJECT_NAME=${COMPOSE_PROJECT_NAME:-$PROJECT_NAME}
+    export LOCALDEV_URL=${LOCALDEV_URL:-http://content-sdp.docker.internal}
+    export COMPOSER=${COMPOSER:-composer.json}
+    export DRUPAL_PROFILE=${DRUPAL_PROFILE:-}
+    export DRUPAL_MODULE_PREFIX=${DRUPAL_MODULE_PREFIX:-mysite}
+    PHPCS_TARGETS=${PHPCS_TARGETS:-.} && export PHPCS_TARGETS=${PHPCS_TARGETS//,/ }
+    if [ "$CI" ]; then export ES_TPL=elasticsearch.ci.yml; fi
+    bash -c "$0" "$@"
+  - '{{cmd}}'
+  - '{{name}}'

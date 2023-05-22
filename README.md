@@ -9,9 +9,8 @@ Tools used for development of Tide distribution and modules.
 2. Make sure that all local web development services are shut down (`apache/nginx`, `mysql`, `MAMP` etc).
 
 ## Local environment setup
-3. `curl https://raw.githubusercontent.com/dpc-sdp/dev-tools/master/install | bash`
-4. `pygmy up`
-5. `ahoy build` 
+1`curl https://raw.githubusercontent.com/dpc-sdp/dev-tools/master/install | bash`
+2`ahoy build` 
 
 ## Available `ahoy` commands
 Run each command as `ahoy <command>`.

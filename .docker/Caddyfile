@@ -1,0 +1,9 @@
+content-sdp.docker.internal:80 {
+  reverse_proxy nginx:8080
+}
+elasticsearch.docker.internal:80 {
+  reverse_proxy elasticsearch:9200
+}
+mailhog.docker.internal:80 {
+  reverse_proxy mailhog:8025
+}

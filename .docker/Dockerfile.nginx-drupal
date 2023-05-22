@@ -1,11 +1,13 @@
 # @see https://github.com/dpc-sdp/bay/blob/master/bay/images/Dockerfile.nginx
+ARG BAY_IMAGE_VERSION
 ARG CLI_IMAGE
-ARG BAY_IMAGE_VERSION=5.x
-
 FROM ${CLI_IMAGE:-cli} as cli
 
-FROM singledigital/bay-nginx:${BAY_IMAGE_VERSION}
+FROM "ghcr.io/dpc-sdp/bay/nginx:${BAY_IMAGE_VERSION}"
 
 ENV WEBROOT=docroot
+
+COPY .docker/global_redirects.conf /etc/nginx/helpers/global_redirects.conf
+RUN fix-permissions /etc/nginx
 
 COPY --from=cli /app /app
