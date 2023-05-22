@@ -1,9 +1,8 @@
 # @see https://github.com/dpc-sdp/bay/blob/master/bay/images/Dockerfile.php
+ARG BAY_IMAGE_VERSION
 ARG CLI_IMAGE
-ARG BAY_IMAGE_VERSION=5.x
-
 FROM ${CLI_IMAGE:-cli} as cli
 
-FROM singledigital/bay-php:${BAY_IMAGE_VERSION}
+FROM ghcr.io/dpc-sdp/bay/php-fpm:${BAY_IMAGE_VERSION}
 
 COPY --from=cli /app /app

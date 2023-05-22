@@ -61,8 +61,6 @@ services:
       << : *default-environment
       COMPOSER_MEMORY_LIMIT: -1
     << : *default-volumes
-    volumes_from: ### Local overrides to mount host SSH keys. Automatically removed in CI.
-      - container:amazeeio-ssh-agent ### Local overrides to mount host SSH keys. Automatically removed in CI.
     labels:
       lagoon.type: cli-persistent
       lagoon.persistent: /app/docroot/sites/default/files/
@@ -80,16 +78,16 @@ services:
       << : *default-environment
     depends_on:
       - cli
-    networks:
-      - amazeeio-network
-      - default
     labels:
       lagoon.type: nginx-php-persistent
       lagoon.persistent: /app/docroot/sites/default/files/
       lagoon.persistent.class: slow
       lagoon.name: nginx-php
     expose:
-    - "8080"
+      - "8080"
+    ports:
+      - "8888:8080"
+
   php:
     build:
       context: .
@@ -109,7 +107,7 @@ services:
       lagoon.name: nginx-php
 
   mariadb:
-    image: amazeeio/mariadb-drupal
+    image: "ghcr.io/dpc-sdp/bay/mariadb:${BAY_IMAGE_VERSION:-5.x}"
     environment:
       << : *default-environment
     ports:
@@ -127,20 +125,40 @@ services:
       context: .
       dockerfile: .docker/Dockerfile.elasticsearch
       args:
-      - ES_TPL=${ES_TPL:-elasticsearch.yml}
+        ES_TPL: ${ES_TPL:-elasticsearch.yml}
+        BAY_IMAGE_VERSION: *bay-image-version
+    ports:
+      - "9200:9200"
     labels:
       lagoon.type: none
 
   chrome:
-    image: selenium/standalone-chrome:3.141.59-oxygen
+    image: seleniarm/standalone-chromium:101.0
     shm_size: '1gb'
     environment:
-      << : *default-environment
-    << : *default-volumes
+      <<: *default-environment
+    <<: *default-volumes
     depends_on:
       - cli
     labels:
       lagoon.type: none
+
+  clamav:
+    image: "ghcr.io/dpc-sdp/bay/clamav:${BAY_IMAGE_VERSION:-5.x}"
+    environment:
+      <<: *default-environment
+    ports:
+      - "3310"
+    labels:
+      lagoon.type: none
+
+  proxy:
+    image: caddy:latest
+    ports:
+      - "${LOCAL_PORT:-80}:80"
+    volumes:
+      - $PWD/.docker:/etc/caddy
+      - $PWD/.docker/Caddyfile:/etc/caddy/Caddyfile
 
 networks:
   amazeeio-network:

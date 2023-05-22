@@ -1,10 +1,9 @@
 # @see https://github.com/dpc-sdp/bay/blob/master/bay/images/Dockerfile.nginx
+ARG BAY_IMAGE_VERSION
 ARG CLI_IMAGE
-ARG BAY_IMAGE_VERSION=5.x
-
 FROM ${CLI_IMAGE:-cli} as cli
 
-FROM singledigital/bay-nginx:${BAY_IMAGE_VERSION}
+FROM "ghcr.io/dpc-sdp/bay/nginx:${BAY_IMAGE_VERSION}"
 
 ENV WEBROOT=docroot
 

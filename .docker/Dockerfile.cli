@@ -1,7 +1,7 @@
-ARG BAY_IMAGE_VERSION=5.x
+ARG BAY_IMAGE_VERSION
 
 # @see https://github.com/dpc-sdp/bay/blob/master/bay/images/Dockerfile.php
-FROM singledigital/bay-cli:${BAY_IMAGE_VERSION}
+FROM ghcr.io/dpc-sdp/bay/php-cli:${BAY_IMAGE_VERSION}
 ARG COMPOSER
 
 ENV MYSQL_HOST=mariadb \
@@ -21,7 +21,7 @@ ADD dpc-sdp /app/dpc-sdp
 COPY composer.json .env composer.* /app/
 
 RUN echo "memory_limit=-1" >> /usr/local/etc/php/conf.d/memory.ini \
-    && composer install -n --no-dev --ansi --prefer-dist --no-suggest --optimize-autoloader \
+    && COMPOSER=$COMPOSER composer install -n --no-dev --ansi --prefer-dist --no-suggest --optimize-autoloader \
     && rm -rf /usr/local/etc/php/conf.d/memory.ini
 
 COPY . /app
