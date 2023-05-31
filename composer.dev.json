@@ -59,7 +59,8 @@
     "repositories": {
         "drupal": {
             "type": "composer",
-            "url": "https://packages.drupal.org/8"
+            "url": "https://packages.drupal.org/8",
+            "exclude": ["drupal/token_conditions"]
         },
         "dpc-sdp/tide": {
             "type": "vcs",
@@ -391,6 +392,11 @@
             "type": "vcs",
             "no-api": true,
             "url": "https://github.com/dpc-sdp/rest-api-behat-extension.git"
+        },
+        "drupal/token_conditions": {
+            "type": "vcs",
+            "no-api": true,
+            "url": "https://github.com/dpc-sdp/token_conditions.git"
         }
     },
     "scripts": {
