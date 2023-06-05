@@ -60,7 +60,7 @@
         "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8",
-            "exclude": ["drupal/token_conditions"]
+            "exclude": ["drupal/token_conditions", "drupal/password_strength"]
         },
         "dpc-sdp/tide": {
             "type": "vcs",
@@ -397,6 +397,11 @@
             "type": "vcs",
             "no-api": true,
             "url": "https://github.com/dpc-sdp/token_conditions.git"
+        },
+        "drupal/password_strength": {
+            "type": "vcs",
+            "no-api": true,
+            "url": "https://github.com/dpc-sdp/password_strength.git"
         }
     },
     "scripts": {
