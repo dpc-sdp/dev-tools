@@ -23,7 +23,7 @@
         "drevops/behat-steps": "^1.2.0",
         "phpcompatibility/php-compatibility": "^9.1",
         "ubirak/rest-api-behat-extension": "dev-rename_ambiguous_match as 8.2.0",
-        "symfony/filesystem": "^4.4",
+        "symfony/filesystem": "^6.2",
         "php-http/curl-client": "*",
         "phpunit/phpunit": "^8.5.14 || ^9",
         "drupal/core-dev":"10.0.x",
