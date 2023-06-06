@@ -18,7 +18,7 @@
         "squizlabs/php_codesniffer": "3.7.1",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
         "drupal/coder": "^8.3.10",
-        "drupal/console": "^1.0",
+        "drupal/console": "dev-feature/Symfony-config-d10-compatibility",
         "drupal/drupal-extension": "^4.1",
         "drevops/behat-screenshot": "^1.0",
         "drevops/behat-steps": "^1.2.0",
@@ -403,6 +403,11 @@
             "type": "vcs",
             "no-api": true,
             "url": "https://github.com/dpc-sdp/password_strength.git"
+        },
+        "drupal/console": {
+            "type": "vcs",
+            "no-api": true,
+            "url": "https://github.com/dpc-sdp/drupal-console.git"
         }
     },
     "scripts": {
