@@ -61,7 +61,7 @@
         "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8",
-            "exclude": ["drupal/token_conditions", "drupal/password_strength", "drupal/console"]
+            "exclude": ["drupal/token_conditions", "drupal/password_strength", "drupal/console", "drupal/console-core"]
         },
         "dpc-sdp/tide": {
             "type": "vcs",
@@ -408,6 +408,11 @@
             "type": "vcs",
             "no-api": true,
             "url": "https://github.com/dpc-sdp/drupal-console.git"
+        },
+        "drupal/console-core": {
+            "type": "vcs",
+            "no-api": true,
+            "url": "https://github.com/dpc-sdp/drupal-console-core.git"
         }
     },
     "scripts": {
