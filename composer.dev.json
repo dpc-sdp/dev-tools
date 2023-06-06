@@ -27,7 +27,7 @@
         "symfony/filesystem": "^6.2",
         "php-http/curl-client": "*",
         "phpunit/phpunit": "^8.5.14 || ^9",
-        "drupal/core-dev":"10.0.x",
+        "drupal/core-dev":"^10.0.9",
         "phpspec/prophecy-phpunit":"^2",
         "weitzman/drupal-test-traits": "^1.5",
         "php-http/message": "^1.16",
