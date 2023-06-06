@@ -61,7 +61,7 @@
         "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8",
-            "exclude": ["drupal/token_conditions", "drupal/password_strength"]
+            "exclude": ["drupal/token_conditions", "drupal/password_strength", "drupal/console"]
         },
         "dpc-sdp/tide": {
             "type": "vcs",
