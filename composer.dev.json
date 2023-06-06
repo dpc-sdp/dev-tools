@@ -19,7 +19,7 @@
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
         "drupal/coder": "^8.3.10",
         "drupal/console": "dev-feature/Symfony-config-d10-compatibility",
-        "drupal/drupal-extension": "^4.1",
+        "drupal/drupal-extension": "^5.0.0rc1",
         "drevops/behat-screenshot": "^1.0",
         "drevops/behat-steps": "^1.2.0",
         "phpcompatibility/php-compatibility": "^9.1",
