@@ -54,7 +54,8 @@
           "cweagans/composer-patches": true,
           "zaporylie/composer-drupal-optimizations": false,
           "dealerdirect/phpcodesniffer-composer-installer": true,
-          "php-http/discovery": true
+          "php-http/discovery": true,
+          "phpstan/extension-installer": true
         }
     },
     "repositories": {
