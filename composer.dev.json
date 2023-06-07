@@ -408,7 +408,7 @@
         "drupal/ckeditor_templates": {
             "type": "vcs",
             "no-api": true,
-            "url": "https://github.com/dpc-sdp/ckeditor_templates.git",
+            "url": "https://github.com/dpc-sdp/ckeditor_templates.git"
         },
         "drupal/console": {
             "type": "vcs",
