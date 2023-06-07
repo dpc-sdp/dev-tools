@@ -62,7 +62,7 @@
         "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8",
-            "exclude": ["drupal/token_conditions", "drupal/password_strength", "drupal/console", "drupal/console-core", "drupal/console-extend-plugin"]
+            "exclude": ["drupal/token_conditions", "drupal/password_strength", "drupal/console", "drupal/console-core", "drupal/console-extend-plugin", "drupal/ckeditor_templates"]
         },
         "dpc-sdp/tide": {
             "type": "vcs",
@@ -404,6 +404,11 @@
             "type": "vcs",
             "no-api": true,
             "url": "https://github.com/dpc-sdp/password_strength.git"
+        },
+        "drupal/ckeditor_templates": {
+            "type": "vcs",
+            "no-api": true,
+            "url": "https://github.com/dpc-sdp/ckeditor_templates.git",
         },
         "drupal/console": {
             "type": "vcs",
