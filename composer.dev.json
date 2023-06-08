@@ -4,7 +4,7 @@
     "license": "proprietary",
     "require": {
         "composer/installers": "^1.9",
-        "cweagans/composer-patches": "^1.6.0",
+        "cweagans/composer-patches": "^1.7.2",
         "drupal/core-composer-scaffold": "^10.0",
         "drupal/core": "9.5.x",
         "drush/drush": "^10",
