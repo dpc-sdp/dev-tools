@@ -6,7 +6,6 @@
  */
 
 use DrevOps\BehatSteps\ContentTrait;
-use Drupal\DrupalExtension\Context\DrupalContext;
 use DrevOps\BehatSteps\FieldTrait;
 use DrevOps\BehatSteps\JsTrait;
 use DrevOps\BehatSteps\LinkTrait;
@@ -17,6 +16,7 @@ use DrevOps\BehatSteps\ResponseTrait;
 use DrevOps\BehatSteps\TaxonomyTrait;
 use DrevOps\BehatSteps\VisibilityTrait;
 use DrevOps\BehatSteps\WatchdogTrait;
+use Drupal\DrupalExtension\Context\DrupalContext;
 
 /**
  * Defines application features from the specific context.
