@@ -32,7 +32,8 @@
         "weitzman/drupal-test-traits": "^1.5",
         "php-http/message": "^1.16",
         "php-http/message-factory": "^1.1",
-        "guzzlehttp/psr7": "^2.5"
+        "guzzlehttp/psr7": "^2.5",
+        "dpc-sdp/tide_test": "dev-feature/SRM-929-d10-update"
     },
     "provide": {
         "drupal/ckeditor": "*"
