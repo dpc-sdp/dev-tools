@@ -31,7 +31,7 @@
         "drupal/core-dev":"10.0.x",
         "phpspec/prophecy-phpunit":"^2",
         "weitzman/drupal-test-traits": "^1.5",
-        "php-http/message": "^1.16",
+        "php-http/message": "~1.13",
         "php-http/message-factory": "^1.1",
         "guzzlehttp/psr7": "~2.4.5",
         "dpc-sdp/tide_test": "dev-feature/SRM-929-d10-update"
