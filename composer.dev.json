@@ -6,7 +6,8 @@
         "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.6.0",
         "drupal/core-composer-scaffold": "^10.0",
-        "drupal/core": "10.0.9",
+        "drupal/core": "10.0.x",
+        "drupal/core-recommended": "10.0.x",
         "drush/drush": "^11",
         "vlucas/phpdotenv": "^4.1",
         "webflo/drupal-finder": "^1.0"
@@ -27,7 +28,7 @@
         "symfony/filesystem": "^6.2",
         "php-http/curl-client": "*",
         "phpunit/phpunit": "^8.5.14 || ^9",
-        "drupal/core-dev":"10.0.9",
+        "drupal/core-dev":"10.0.x",
         "phpspec/prophecy-phpunit":"^2",
         "weitzman/drupal-test-traits": "^1.5",
         "php-http/message": "^1.16",
