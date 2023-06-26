@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Subject of the message.
+commit_subject=$(head -1 "$1")
+
+# Body of the message.
+commit_body=$(sed -n '2,$p' "$1")
+
+# Verify subject line.
+commit_regex="^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?!?: .+"
+error_msg="ERROR: The commit message does not follow the Conventional Commits 1.0.0 standard.
+           Please use format like: 'type(scope)!: Subject'
+           Type can be:
+               feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert
+           Scope is optional and can be anything specifying place of the commit change
+           The exclamation mark '!' is optional and indicates a breaking change"
+
+if ! echo "$commit_subject" | grep -qE "$commit_regex"; then
+    echo "$error_msg" >&2
+    exit 1
+fi
+
+# Verify body of the submitted message.
+footer_regex="^([A-Za-z][-A-Za-z0-9]*|BREAKING CHANGE|BREAKING-CHANGE)( |#).+"
+if [[ -n "$commit_body" ]] && ! echo "$commit_body" | grep -qE "$footer_regex"; then
+    echo "ERROR: The footer of the commit message is not well-formed." >&2
+    exit 1
+fi
+
+# Check for significant changes.
+breaking_change_footer=$(echo "$commit_body" | grep -E "^(BREAKING CHANGE|BREAKING-CHANGE): ")
+if [[ "$commit_subject" == *'!'* ]] && [[ -z "$breaking_change_footer" ]]; then
+    echo "ERROR: The commit message indicates a breaking change but does not contain a 'BREAKING CHANGE:' or 'BREAKING-CHANGE:' footer." >&2
+    exit 1
+fi
