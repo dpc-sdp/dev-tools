@@ -62,6 +62,10 @@
             "url": "https://packages.drupal.org/8",
             "exclude": ["drupal/token_conditions"]
         },
+        "asset-packagist": {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
         "dpc-sdp/tide": {
             "type": "vcs",
             "no-api": true,
