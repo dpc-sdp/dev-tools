@@ -64,12 +64,17 @@
         "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8",
-            "exclude": ["drupal/token_conditions", "drupal/password_strength", "drupal/console", "drupal/console-core", "drupal/console-extend-plugin", "drupal/ckeditor_templates"]
+            "exclude": ["drupal/token_conditions", "drupal/password_strength", "drupal/console", "drupal/console-core", "drupal/console-extend-plugin", "drupal/ckeditor_templates", "drupal/create_menus_permission"]
         },
         "dpc-sdp/tide": {
             "type": "vcs",
             "no-api": true,
             "url": "https://github.com/dpc-sdp/tide.git"
+        },
+        "drupal/create_menus_permission": {
+            "type": "vcs",
+            "no-api": true,
+            "url": "https://github.com/dpc-sdp/create_menus_permission.git"
         },
         "dpc-sdp/tide_alert": {
             "type": "vcs",
