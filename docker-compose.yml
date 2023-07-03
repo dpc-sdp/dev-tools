@@ -38,6 +38,7 @@ x-environment:
   # Local dev URL populated from the environment. Do not override here. Instead,
   # specify the value in .env file.
   LAGOON_LOCALDEV_URL: ${LOCALDEV_URL:-http://mysite.docker.amazee.io}
+  LAGOON_ROUTE: ${LOCALDEV_URL:-http://mysite.docker.amazee.io}
   GITHUB_TOKEN: ${GITHUB_TOKEN:-}
   BAY_KEY: ${BAY_KEY:-}
   BAY_IMAGE_VERSION: ${BAY_IMAGE_VERSION:-5.x}
