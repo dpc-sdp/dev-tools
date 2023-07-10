@@ -162,6 +162,10 @@ commands:
     usage: Lint code.
     cmd: ahoy cli "vendor/bin/phpcs ${PHPCS_TARGETS}"
 
+  lint-fix:
+    usage: Fix lint errors.
+    cmd: ahoy cli "vendor/bin/phpcbf ${PHPCS_TARGETS}"
+
   test-behat:
     usage: Run Behat tests.
     cmd: ahoy cli "./vendor/bin/behat --strict --colors ${BEHAT_PROFILE} $@"
