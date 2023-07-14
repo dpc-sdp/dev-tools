@@ -430,7 +430,7 @@
                     "installer-name": "progress-tracker"
                 },
                 "dist": {
-                    "url": "https://github.com/NigelOToole/progress-tracker/archive/v2.0.7.zip",
+                    "url": "https://github.com/NigelOToole/progress-tracker/archive/refs/tags/2.0.7.zip",
                     "type": "zip"
                 },
                 "require": {
