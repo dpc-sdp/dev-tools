@@ -47,6 +47,8 @@ x-environment:
   # Uncomment to enable Xdebug and then restart via `ahoy up`.
   #XDEBUG_ENABLE: "true"
   DOCKERHOST: host.docker.internal
+  # Comment out the above and uncomment the below if you are using Colima rather than Docker Desktop
+  #DOCKERHOST: 192.168.5.2
 
 services:
 

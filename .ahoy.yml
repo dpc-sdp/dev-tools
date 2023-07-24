@@ -162,6 +162,10 @@ commands:
     usage: Lint code.
     cmd: ahoy cli "vendor/bin/phpcs ${PHPCS_TARGETS}"
 
+  lint-fix:
+    usage: Fix lint errors.
+    cmd: ahoy cli "vendor/bin/phpcbf ${PHPCS_TARGETS}"
+
   test-behat:
     usage: Run Behat tests.
     cmd: ahoy cli "./vendor/bin/behat --strict --colors ${BEHAT_PROFILE} $@"
@@ -184,6 +188,8 @@ entrypoint:
   - "-c"
   - |
     [ -f .env ] && export $(grep -v '^#' .env | xargs) && [ -f .env.local ] && export $(grep -v '^#' .env.local | xargs)
+    export DOCKER_BUILDKIT=0
+    export COMPOSE_DOCKER_CLI_BUILD=0
     export PROJECT_NAME=${PROJECT_NAME:-$(basename $(pwd))}
     export APP=${APP:-/app}
     export WEBROOT=${WEBROOT:-docroot}
