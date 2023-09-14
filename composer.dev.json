@@ -31,7 +31,8 @@
         "weitzman/drupal-test-traits": "^1.5",
         "php-http/message": "^1.16",
         "php-http/message-factory": "^1.1",
-        "guzzlehttp/psr7": "^1.9"
+        "guzzlehttp/psr7": "^1.9",
+        "drupal/test_helpers": "^1.2"
     },
     "provide": {
         "drupal/ckeditor": "*"
