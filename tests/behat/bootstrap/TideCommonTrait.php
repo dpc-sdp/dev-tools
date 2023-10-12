@@ -168,4 +168,16 @@ JS;
     }
   }
 
+  /**
+   * Wait for the Batch API to finish.
+   *
+   * Wait until the id="updateprogress" element is gone,
+   * or timeout after 3 minutes (180,000 ms).
+   *
+   * @Given /^I wait for the batch process to finish$/
+   */
+  public function iWaitForTheBatchProcessToFinish(): void {
+    $this->getSession()->wait(180000, 'jQuery("#updateprogress").length === 0');
+  }
+
 }
