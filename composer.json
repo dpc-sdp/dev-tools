@@ -4,9 +4,9 @@
     "license": "GPL-2.0-or-later",
     "type": "drupal-module",
     "require": {
-        "dpc-sdp/tide_core": "dev-feature/SRM-870-d10-update"
+        "dpc-sdp/tide_core": "^4.0.0"
     },
     "suggest": {
-        "dpc-sdp/tide_media:^3.0.0": "Media and related configuration for Tide Drupal 8 distribution"
+        "dpc-sdp/tide_media:^4.0.0": "Media and related configuration for Tide Drupal 10 distribution"
     }
 }
