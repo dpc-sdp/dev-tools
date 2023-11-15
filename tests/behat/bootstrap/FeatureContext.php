@@ -23,19 +23,19 @@ use Drupal\DrupalExtension\Context\DrupalContext;
  */
 class FeatureContext extends DrupalContext {
 
-  use LinkTrait;
-  use PathTrait;
-  use FieldTrait;
   use ContentTrait;
+  use FieldTrait;
+  use JsTrait;
+  use LinkTrait;
   use MediaTrait;
   use MenuTrait;
-  use TaxonomyTrait;
+  use PathTrait;
   use ResponseTrait;
+  use TaxonomyTrait;
   use TideCommonTrait;
   use TideExtensionsTrait;
   use TideEntityTrait;
-  use WatchdogTrait;
-  use JsTrait;
   use VisibilityTrait;
+  use WatchdogTrait;
 
 }
