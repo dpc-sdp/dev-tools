@@ -33,7 +33,7 @@
         "weitzman/drupal-test-traits": "^1.5",
         "php-http/message": "~1.13",
         "php-http/message-factory": "^1.1",
-        "guzzlehttp/psr7": "~2.5.0",
+        "guzzlehttp/psr7": "~2.6.2",
         "dpc-sdp/tide_test": "^4.0.0",
         "drupal/test_helpers": "^1.2"
     },
