@@ -147,7 +147,7 @@ services:
       lagoon.type: none
 
   clamav:
-    image: "ghcr.io/dpc-sdp/bay/clamav:${BAY_IMAGE_VERSION:-6.x}"
+    image: "ghcr.io/dpc-sdp/bay/clamav:${BAY_IMAGE_VERSION:-5.x}"
     environment:
       <<: *default-environment
     ports:
