@@ -147,7 +147,7 @@ services:
       lagoon.type: none
 
   clamav:
-    image: "ghcr.io/dpc-sdp/bay/clamav:${BAY_IMAGE_VERSION:-5.x}"
+    image: "clamav/clamav-debian:1.2.0-6"
     environment:
       <<: *default-environment
     ports:
