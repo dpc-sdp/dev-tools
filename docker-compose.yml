@@ -6,7 +6,7 @@
 version: '2.3'
 
 x-bay-image-version:
-  &bay-image-version ${BAY_IMAGE_VERSION:-5.x}
+  &bay-image-version ${BAY_IMAGE_VERSION:-6.x}
 
 x-project:
   &project ${PROJECT_NAME:-mysite}
@@ -41,7 +41,7 @@ x-environment:
   LAGOON_ROUTE: ${LOCALDEV_URL:-http://mysite.docker.amazee.io}
   GITHUB_TOKEN: ${GITHUB_TOKEN:-}
   BAY_KEY: ${BAY_KEY:-}
-  BAY_IMAGE_VERSION: ${BAY_IMAGE_VERSION:-5.x}
+  BAY_IMAGE_VERSION: ${BAY_IMAGE_VERSION:-6.x}
   LAGOON_ENVIRONMENT_TYPE: ${LAGOON_ENVIRONMENT_TYPE:-local}
   DRUPAL_REFRESH_SEARCHAPI: ${DRUPAL_REFRESH_SEARCHAPI:-}
   # Uncomment to enable Xdebug and then restart via `ahoy up`.
@@ -110,7 +110,7 @@ services:
       lagoon.name: nginx-php
 
   mariadb:
-    image: "ghcr.io/dpc-sdp/bay/mariadb:${BAY_IMAGE_VERSION:-5.x}"
+    image: "ghcr.io/dpc-sdp/bay/mariadb:${BAY_IMAGE_VERSION:-6.x}"
     environment:
       << : *default-environment
     ports:
@@ -147,7 +147,7 @@ services:
       lagoon.type: none
 
   clamav:
-    image: "ghcr.io/dpc-sdp/bay/clamav:${BAY_IMAGE_VERSION:-5.x}"
+    image: "clamav/clamav-debian:1.2.0-6"
     environment:
       <<: *default-environment
     ports:
