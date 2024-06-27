@@ -22,10 +22,7 @@ trait TideCommonTrait {
   }
 
   /**
-   * Creates and authenticates a user with the given role(s).
-   *
-   * @Given I am logged in as a user with the :role role(s)
-   * @Given I am logged in as a/an :role
+   * Overriding parent function.
    */
   public function assertAuthenticatedByRole($role) {
     // Override parent assertion to allow using 'anonymous user' role without
