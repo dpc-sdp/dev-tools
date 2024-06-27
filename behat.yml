@@ -23,7 +23,7 @@ default:
       selenium2:
         wd_host: "http://chrome:4444/wd/hub"
         capabilities: { "browser": "chrome", "version": "*", "marionette": true }
-      goutte: ~
+      browserkit_http: ~
       ajax_timeout: 5
       browser_name: chrome
       javascript_session: selenium2
