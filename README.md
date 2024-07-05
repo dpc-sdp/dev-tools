@@ -2,15 +2,15 @@
 Tools used for development of Tide distribution and modules.
 
 ## Prerequisites
-1. Make sure that you have latest versions of all required software installed:   
-  - [Docker](https://www.docker.com/) 
+1. Make sure that you have latest versions of all required software installed:
+  - [Docker](https://www.docker.com/)
   - [Pygmy](https://docs.amazee.io/local_docker_development/pygmy.html)
-  - [Ahoy](https://github.com/ahoy-cli/ahoy) 
+  - [Ahoy](https://github.com/ahoy-cli/ahoy)
 2. Make sure that all local web development services are shut down (`apache/nginx`, `mysql`, `MAMP` etc).
 
 ## Local environment setup
 1`curl https://raw.githubusercontent.com/dpc-sdp/dev-tools/master/install | bash`
-2`ahoy build` 
+2`ahoy build`
 
 ## Available `ahoy` commands
 Run each command as `ahoy <command>`.
@@ -25,7 +25,7 @@ Run each command as `ahoy <command>`.
    drush                Run drush commands in the CLI service container.
    info                 Print information about this project.
    install-dev          Install dependencies.
-   install-site         Install site.   
+   install-site         Install site.
    lint                 Lint code.
    login                Login to a website.
    logs                 Show Docker logs.
@@ -38,16 +38,16 @@ Run each command as `ahoy <command>`.
 ```
 
 ## Main ideas behind Dev Tools
-- Do not add something that does not normally exist in the repos. 
+- Do not add something that does not normally exist in the repos.
   Example: Drupal module repo should not have Docker configs.
 - Fetch as much of dev config as possible from Dev Tools repository.
-  Caveat: CircleCI config does not support inclusions (each project must commit 
-  it) or we would use a fetched version for it as well. Instead, the steps were 
-  abstracted into scripts, so that the main CI configuration file does not need 
-  to be changed. 
+  Caveat: CircleCI config does not support inclusions (each project must commit
+  it) or we would use a fetched version for it as well. Instead, the steps were
+  abstracted into scripts, so that the main CI configuration file does not need
+  to be changed.
 - Abstract similar functionality into steps. This will allow to apply changes at
   the larger scale without the need to modify each project.
-- Run the most of the code in the containers. This is to reduce required tools 
+- Run the most of the code in the containers. This is to reduce required tools
   on the host machine.
   Caveat: due to some limitations, `jq` must be installed on the host to work on
   module projects. This may change in the future.
@@ -56,7 +56,7 @@ Run each command as `ahoy <command>`.
 - Supports project (full-site) and module projects
 - Provides Docker stack based on Bay
 - Allows to override configuration per-project
-- Simple initialisation by CURLing install script 
+- Simple initialisation by CURLing install script
 - Provides CI configuration
 - Provides Behat configuration
 
@@ -64,40 +64,40 @@ Run each command as `ahoy <command>`.
 
 Dev Tools allows to add all required tools to module and site projects.
 
-To support adding Dev Tools for development, it was designed to be fetchable 
-from a separate repository. 
-The main reason is to simplify the maintenance of module projects: remove the 
+To support adding Dev Tools for development, it was designed to be fetchable
+from a separate repository.
+The main reason is to simplify the maintenance of module projects: remove the
 overhead of maintaining the same development files in all repositories.
 
-While it is used only for development in module projects, for site builds it is 
-advised to commit Dev Tools files to enable proper integration with hosting 
+While it is used only for development in module projects, for site builds it is
+advised to commit Dev Tools files to enable proper integration with hosting
 services (Lagoon) - cannot be hosted on Lagoon if there are no docker files!
 
-To be able to support both module and site build projects, a series of 
+To be able to support both module and site build projects, a series of
 configuration variables are available.
 
-More specifically, for module projects, to enable local development (and CI) 
-the Dev Tools needs to be fetched, composer configuration needs to be merged and 
+More specifically, for module projects, to enable local development (and CI)
+the Dev Tools needs to be fetched, composer configuration needs to be merged and
 a project needs to be built. All this is handled with a single `ahoy build`
-command. 
-Dev Tools also supports symlinking of current module files into Drupal project 
+command.
+Dev Tools also supports symlinking of current module files into Drupal project
 to support development.
 
-In order to allow this to happen, Dev Tools creates `composer.build.json` - 
+In order to allow this to happen, Dev Tools creates `composer.build.json` -
 config file with merged dependencies.
 
 Then, we install a site and install current module.
 
-To install current module, we export current directory as is and place it into a 
-local composer dependency folder. Then, we provide a new location for this 
-repository and require it. Since composer does not allow to symlink the files 
-to the deps itself, we are working on the copy of files. Once the work is 
-finished, we need to run a sync script to make these files overwrite actual 
-files in the repository (this approach is very cubersome and not implemented yet, 
+To install current module, we export current directory as is and place it into a
+local composer dependency folder. Then, we provide a new location for this
+repository and require it. Since composer does not allow to symlink the files
+to the deps itself, we are working on the copy of files. Once the work is
+finished, we need to run a sync script to make these files overwrite actual
+files in the repository (this approach is very cubersome and not implemented yet,
 but it is the only one way to overcome Composer limitation).
 
-Next, we assess if we need to install suggested packages - this is to ensure 
-that optional configuration works as expected. We also enable them (as there is 
+Next, we assess if we need to install suggested packages - this is to ensure
+that optional configuration works as expected. We also enable them (as there is
 no way to specify optional packages in module files).
 
 Finally, we install the module itself.
@@ -110,7 +110,7 @@ Finally, we install the module itself.
 	1.2.3
 	1.2.3-alpha.1
 	1.2.3-alpha.1.2
-  ```	
+  ```
 
 ### FAQs
 #### How to use Xdebug?
@@ -123,10 +123,10 @@ Finally, we install the module itself.
 3. Enable listening for incoming debug connections in your IDE.
 4. If required, provide server URL to your IDE as it appears in the browser: `http://<YOURSITE>.docker.amazee.io`
 5. Enable Xdebug flag in the request coming from your browser.
-6. Set a breakpoint in your IDE and perform a request in browser. 
+6. Set a breakpoint in your IDE and perform a request in browser.
 
 #### How to specify custom branch for suggested module?
-Just add it as a normal branch constraint to a name of the module: 
+Just add it as a normal branch constraint to a name of the module:
 ```
     "suggest": {
         "dpc-sdp/tide_api:dev-ci": "Allows to use Drupal in headless mode"
@@ -134,15 +134,15 @@ Just add it as a normal branch constraint to a name of the module:
 ```
 
 #### What is 'Suggested mode'?
-This is how we test optional configuration. Modules may specify their 
-optional dependencies using 'suggest' section in `composer.json` file. The CI 
-process for each module runs `build_suggest` build, where these optional modules 
-are enabled. 
+This is how we test optional configuration. Modules may specify their
+optional dependencies using 'suggest' section in `composer.json` file. The CI
+process for each module runs `build_suggest` build, where these optional modules
+are enabled.
 
 #### What is `@suggest` and `@nosuggest` tags in tests?
-Tagging a test with `@suggest` means that it will run only for 
-*Suggested mode* (see above). 
-Tagging a test with `@nosuggest` means that the test will run only in normal mode. 
+Tagging a test with `@suggest` means that it will run only for
+*Suggested mode* (see above).
+Tagging a test with `@nosuggest` means that the test will run only in normal mode.
 Not providing a tag will run test in both modes.
 
 ## Workflow recipes
@@ -154,7 +154,7 @@ or commit `dev-tools.sh` to your project and execute it as `. dev-tools.sh`.
 This will install the latest published release of Dev Tools.
 
 #### Override Dev Tools files in your project
-1. Remove lines that point to files being overridden from `.git/info/exclude` in 
+1. Remove lines that point to files being overridden from `.git/info/exclude` in
 your project repository.
 2. Commit required files. They will not be overridden on next Dev Tools install.
 
@@ -164,12 +164,12 @@ your project repository.
 #### Use Dev Tools at specific commit
 `GH_COMMIT=COMMIT_SHA . dev-tools.sh`
 
-### Branch-based development for module projects 
+### Branch-based development for module projects
 #### Use development versions of dependencies
-TBD 
+TBD
 
 ## Maintenance
-To update Dev Tools and release a new version, a special care should be taken as 
+To update Dev Tools and release a new version, a special care should be taken as
 broken Dev Tools will break all project builds.
 
 To make a change:
@@ -180,14 +180,14 @@ To make a change:
 5. Commit and make sure that the build passes.
 6. If the build passes, merge the Dev Tools branch to `master` and make a release.
     - NOTE: This must be a release in GitHub, see https://github.com/dpc-sdp/dev-tools/releases/new
-7. Remove the temporary branch in `tide_*` module from Step 3. 
+7. Remove the temporary branch in `tide_*` module from Step 3.
 
 ## Unit test
-The dev-tools supports unit tests. 
+The dev-tools supports unit tests.
 ### Registering tests
 #### Directory
-1. The unit tests should go in `tests\src\Unit` direcotry. 
-2. The unit tests need to respect PSR-4 namespace naming convention, in our case, 
+1. The unit tests should go in `tests\src\Unit` direcotry.
+2. The unit tests need to respect PSR-4 namespace naming convention, in our case,
     `namespace Drupal\Tests\{module}\Unit`
 ### 2 ways to run tests
 1. commit to CI.
