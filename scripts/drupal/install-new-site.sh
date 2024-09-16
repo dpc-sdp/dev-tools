@@ -15,3 +15,6 @@ drush -r ${APP}/${WEBROOT} si ${DRUPAL_PROFILE} -y --uri=${URI} --account-name=$
 drush -r ${APP}/${WEBROOT} ublk --uri=${URI} 1
 drush -r ${APP}/${WEBROOT} cr --uri=${URI} -y
 drush -r ${APP}/${WEBROOT} --uri=${URI} php-eval "\$prefix = getenv('DRUPAL_MODULE_PREFIX'); if (\$prefix) { \$loaded = module_load_install(\$prefix . '_core'); if (\$loaded) { \$func = \$prefix . '_core_enable_modules'; \$func(TRUE); } }"
+
+# Copy commit-msg to git hooks.
+cp scripts/commit-msg .git/hooks/

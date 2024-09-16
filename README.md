@@ -112,6 +112,76 @@ Finally, we install the module itself.
 	1.2.3-alpha.1.2
   ```
 
+## Conventional Commits
+Benefits of Conventional Commits
+1. Each commit message provides additional relevant information, making it easier to browse through the commit history quickly.
+2. It allows for easy filtering of commits using git log --grep <keyword>, enabling fast searching for specific information.
+3. Commit messages can be used to generate a Change log directly, summarizing the changes made in the project.
+
+#### Conventional Commits consist of three parts: Header, Body, and Footer. The format is as follows:
+
+```shell
+<type>(<scope>): <subject>
+<space>
+<body>
+<space>
+<footer>
+```
+The Header is required, while the Body and Footer are optional.
+#### Header 
+The header includes three parts: type, scope, and subject. Among them, scope is optional.
+```shell
+<type>(<scope>): <subject>
+
+# example
+feat(api)!: send an email to the customer when a product is shipped
+```
+
+"type" is used to specify the category of the commit, with specific identifiers as follows:
+
+1. feat: A new feature;
+2. fix: Bug fix;
+3. docs: Document modifications, such as README.md, CHANGELOG.md, etc;
+4. style: Code format changes that do not affect the operation of the code, such as spaces, code formatting, appending semicolons at the end of a sentence, etc;
+5. refactor: Code refactoring, without adding new features or fixing bugs in code changes;
+6. perf: Code optimization to improve performance;
+7. test: Increasing tests or optimizing existing tests;
+8. build: Changes affecting project build files or external dependencies, such as npm, gulp, webpack, broccoli, etc;
+9. ci: Modifications to CI configuration files and scripts;
+10. revert: Code rollback.
+
+"scope" is used to specify the impact area of the commit, such as the data layer, control layer, view layer, etc., which vary from project to project. If your modification affects more than one scope, you can use * as a replacement.
+
+"subject" is a brief description of the purpose of the commit, not exceeding 50 characters, and does not require a period at the end.
+
+#### Body
+
+The Body part is a detailed description of this commit and can be divided into multiple lines.
+
+The Body part should explain the motivation for the code changes, as well as a comparison with the previous behavior.
+```shell
+# example
+feat(api)!: send an email to the customer when a product is shipped
+
+# below is the body
+changes:
+1. xxxxxxx
+2. xxxxxxx
+```
+#### Footer
+
+The Footer section is mainly used for two situations: incompatible changes and issue handling.
+```shell
+feat: allow provided config object to extend other configs
+
+BREAKING CHANGE: `extends` key in config file is now used for extending other config files
+
+# below is the footer
+xxxxxxxxxxxx
+xxxxxxxxxxxx
+xxxxxxxxxxxx
+```
+
 ### FAQs
 #### How to use Xdebug?
 1. Uncomment this line in `docker-compose.yml`:
