@@ -137,14 +137,15 @@ JS;
    */
   public function clickOnDetail(string $text) {
     $page = $this->getSession()->getPage();
-    $link = $page->find('xpath', '//div[contains(@class, "details-wrapper")]/details/summary[text()="' . $text . '"]');
-    if ($link === NULL) {
-      $link = $page->find('xpath', '//div[contains(@class, "details-wrapper")]/details/summary/span[text()="' . $text . '"]');
-      if ($link === NULL) {
-        throw new \Exception('The detail with text "' . $text . '" not found.');
-      }
+    $xpath = sprintf('//details/summary[contains(normalize-space(.), "%s")]', $text);
+    $element = $page->find('xpath', $xpath);
+    if (!$element) {
+      throw new \Exception(sprintf('The detail with text "%s" was not found on the page.', $text));
     }
-    $link->click();
+    if (!$element->isVisible()) {
+      throw new \Exception(sprintf('The detail with text "%s" was found but is not visible.', $text));
+    }
+    $element->click();
   }
 
   /**
