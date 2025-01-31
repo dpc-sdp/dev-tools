@@ -10,5 +10,5 @@ on:
 jobs:
   dorg_git_sync:
     name: dorg_git_sync
-    uses: dpc-sdp/github-actions/.github/workflows/dorg_git_sync.yml@v1.2.0
+    uses: dpc-sdp/github-actions/.github/workflows/dorg_git_sync.yml@v1.5.0
     secrets: inherit

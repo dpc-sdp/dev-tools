@@ -4,12 +4,12 @@ on:
   push:
     branches:
       - develop
-        
+
 jobs:
   set_status_in_progress:
     name: set_status_in_progress
     if: always()
-    uses: dpc-sdp/github-actions/.github/workflows/set_status.yml@v1.2.0
+    uses: dpc-sdp/github-actions/.github/workflows/set_status.yml@v1.5.0
     secrets: inherit
     with:
       context: 'tide_merge_to_reference'
@@ -18,12 +18,12 @@ jobs:
       target_url: ${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}
   tide_merge_to_reference:
     name: tide_merge_to_reference
-    uses: dpc-sdp/github-actions/.github/workflows/tide_merge_to_reference.yml@v1.2.0
+    uses: dpc-sdp/github-actions/.github/workflows/tide_merge_to_reference.yml@v1.5.0
   set_status:
     name: set_status
     needs: [tide_merge_to_reference]
     if: always()
-    uses: dpc-sdp/github-actions/.github/workflows/set_status.yml@v1.2.0
+    uses: dpc-sdp/github-actions/.github/workflows/set_status.yml@v1.5.0
     secrets: inherit
     with:
       context: 'tide_merge_to_reference'
