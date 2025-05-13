@@ -1,5 +1,6 @@
 <?php
 
+namespace Tide\Tests\Context;
 use Behat\Behat\Hook\Scope\AfterFeatureScope;
 use Behat\Behat\Hook\Scope\BeforeFeatureScope;
 use Behat\Gherkin\Node\FeatureNode;

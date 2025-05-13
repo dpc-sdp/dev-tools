@@ -1,5 +1,6 @@
 <?php
 
+namespace Tide\Tests\Context;
 use Behat\Gherkin\Node\TableNode;
 
 /**

@@ -1,5 +1,6 @@
 <?php
 
+namespace Tide\Tests\Context;
 /**
  * Common test trait for Tide.
  *

@@ -5,6 +5,8 @@
  * Feature context for Behat testing.
  */
 
+namespace Tide\Tests\Context;
+
 use DrevOps\BehatSteps\ContentTrait;
 use DrevOps\BehatSteps\FieldTrait;
 use DrevOps\BehatSteps\JsTrait;
