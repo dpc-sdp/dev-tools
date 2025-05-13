@@ -22,6 +22,11 @@ commands:
              tide_event \
              tide_news \
              tide_grant \
+             tide_api \
+             tide_media \
+             tide_webform \
+             tide_publication \
+             tide_alert \
              -y; \
          fi \
       && ahoy line "Build complete" \
