@@ -14,7 +14,21 @@ commands:
       && if [ "$COMPOSER" != "composer.json" ] && [ "$DRUPAL_PROFILE" ]; then ahoy init-profile; fi \
       && ahoy install-site \
       && if [ "$COMPOSER" != "composer.json" ]; then ahoy init-module; fi \
-      && if [ "$COMPOSER" != "composer.json" ]; then ahoy drush pm-enable tide_test -y; fi \
+      && if [ "$COMPOSER" != "composer.json" ]; then \
+           ahoy drush pm-enable \
+             tide_test \
+             tide_landing_page \
+             tide_site \
+             tide_event \
+             tide_news \
+             tide_grant \
+             tide_api \
+             tide_media \
+             tide_webform \
+             tide_publication \
+             tide_alert \
+             -y; \
+         fi \
       && ahoy line "Build complete" \
       && ahoy info 1
 

@@ -44,6 +44,9 @@
         "drupal/ckeditor": "*"
     },
     "autoload": {
+        "psr-4": {
+            "Tide\\Tests\\Context\\": "tests/behat/bootstrap/"
+        },
         "classmap": [
             "scripts/composer/"
         ]

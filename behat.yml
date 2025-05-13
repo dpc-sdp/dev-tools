@@ -7,9 +7,20 @@ default:
       tags: "~@suggest&&~@skipped"
   suites:
     default:
-      paths: [ '%paths.base%/tests/behat/features' ]
+      paths: 
+        - '%paths.base%/tests/behat/features'
+        - '%paths.base%/modules/tide_event/tests/behat/features'
+        - '%paths.base%/modules/tide_news/tests/behat/features'
+        - '%paths.base%/modules/tide_grant/tests/behat/features'
+        - '%paths.base%/modules/tide_site/tests/behat/features'
+        - '%paths.base%/modules/tide_landing_page/tests/behat/features'
+        - '%paths.base%/modules/tide_api/tests/behat/features'
+        - '%paths.base%/modules/tide_media/tests/behat/features'
+        - '%paths.base%/modules/tide_webform/tests/behat/features'
+        - '%paths.base%/modules/tide_publication/tests/behat/features'
+        - '%paths.base%/modules/tide_alert/tests/behat/features'
       contexts:
-      - FeatureContext
+      - Tide\Tests\Context\FeatureContext
       - Drupal\DrupalExtension\Context\MinkContext
       - Drupal\DrupalExtension\Context\MarkupContext
       - Drupal\DrupalExtension\Context\MessageContext
